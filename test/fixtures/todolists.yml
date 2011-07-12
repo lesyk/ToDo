@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  note: MyString
+  tags: MyString
+  prio: 1
+  duedate: 2011-07-11
+
+two:
+  title: MyString
+  note: MyString
+  tags: MyString
+  prio: 1
+  duedate: 2011-07-11

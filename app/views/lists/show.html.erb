@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @list.name %>
+</p>
+
+<p>
+  <b>Sorting:</b>
+  <%= @list.sorting %>
+</p>
+
+<p>
+  <b>Published:</b>
+  <%= @list.published %>
+</p>
+
+<p>
+  <b>Taskview:</b>
+  <%= @list.taskview %>
+</p>
+
+<h2>Todolists</h2>
+<% @list.todolists.each do |todolist| %>
+	<%=link_to todolist.title, :controller => "todolists", :action => "show", :id => todolist.id %>
+<% end %>
+ 
+<h2>Add todolist:</h2>
+<%= form_for([@list, @list.todolists.build]) do |f| %>
+	<div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br />
+    <%= f.text_field :note %>
+  </div>
+  <div class="field">
+    <%= f.label :prio %><br />
+    <%= f.number_field :prio %>
+  </div>
+  <div class="field">
+    <%= f.label :duedate %><br />
+    <%= f.date_select :duedate %>
+  </div>
+
+  <div class="field">
+	<%= f.label 'Tag List (Delimiter = ,)' %><br />
+	<%= f.text_field :tag_list %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+ 
+<br />
+
+
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>

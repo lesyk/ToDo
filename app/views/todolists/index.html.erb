@@ -1,0 +1,29 @@
+<h1>Listing todolists</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Note</th>
+    <th>Prio</th>
+    <th>Duedate</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @todolists.each do |todolist| %>
+  <tr>
+    <td><%= todolist.title %></td>
+    <td><%= todolist.note %></td>
+    <td><%= todolist.prio %></td>
+    <td><%= todolist.duedate %></td>
+    <td><%= link_to 'Show', todolist %></td>
+    <td><%= link_to 'Edit', edit_todolist_path(todolist) %></td>
+    <td><%= link_to 'Destroy', todolist, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Lists', lists_path %>

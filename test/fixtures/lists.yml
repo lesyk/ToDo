@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  sorting: 1
+  published: 1
+  taskview: 1
+
+two:
+  name: MyString
+  sorting: 1
+  published: 1
+  taskview: 1

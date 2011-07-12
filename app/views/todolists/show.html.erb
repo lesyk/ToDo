@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @todolist.title %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%= @todolist.note %>
+</p>
+
+<p>
+  <b>Prio:</b>
+  <%= @todolist.prio %>
+</p>
+
+<p>
+  <b>Duedate:</b>
+  <%= @todolist.duedate %>
+</p>
+
+<p><strong>This todo was tagged with</strong>: <% for tag in @todolist.tags %> 
+<%= tag.name %>
+<%end%>
+</p>
+
+<%= link_to 'Edit', edit_todolist_path(@todolist) %> |
+<%= link_to 'Back', todolists_path %>
