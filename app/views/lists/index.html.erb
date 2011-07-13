@@ -1,4 +1,5 @@
 <h1>Listing lists</h1>
+<div id = "list_count"><%= @lists.count%></div>
 
 <table>
   <tr>
@@ -10,20 +11,51 @@
     <th></th>
     <th></th>
   </tr>
-
-<% @lists.each do |list| %>
-  <tr>
-    <td><%= list.name %></td>
-    <td><%= list.sorting %></td>
-    <td><%= list.published %></td>
-    <td><%= list.taskview %></td>
-    <td><%= link_to 'Show', list %></td>
-    <td><%= link_to 'Edit', edit_list_path(list) %></td>
-    <td><%= link_to 'Destroy', list, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
 </table>
+<div id = "lists">
+<% @lists.each do |list| %>
+<div>
+    <%= list.name %> <%= list.sorting %>  <%= list.published %> <%= list.taskview %> <%= link_to 'Show', list %>|<%= link_to 'Edit', edit_list_path(list) %>|<%= link_to 'Destroy', list, confirm: 'Are you sure?', method: :delete %>
+</div>
+<% end %>
+	<div id = "list_new"></div>
+</div>
 
 <br />
+
+<%= form_for(@list, :remote => true) do |f| %>
+  <% if @list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@list.errors.count, "error") %> prohibited this list from being saved:</h2>
+
+      <ul>
+      <% @list.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :sorting %><br />
+    <%= f.number_field :sorting %>
+  </div>
+  <div class="field">
+    <%= f.label :published %><br />
+    <%= f.number_field :published %>
+  </div>
+  <div class="field">
+    <%= f.label :taskview %><br />
+    <%= f.number_field :taskview %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
 
 <%= link_to 'New List', new_list_path %>
