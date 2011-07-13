@@ -26485,3 +26485,378 @@ Served asset /application.css - 304 Not Modified  (6ms)  (pid 39349)
 
 Started GET "/assets/application.js" for 127.0.0.1 at 2011-07-13 03:04:58 +0300
 Served asset /application.js - 304 Not Modified  (2ms)  (pid 39349)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-13 15:20:58 +0300
+  Processing by ListsController#index as HTML
+  [1m[36mList Load (38.2ms)[0m  [1mSELECT `lists`.* FROM `lists` [0m
+Rendered lists/index.html.erb within layouts/application (1181.1ms)
+Completed 200 OK in 1659ms (Views: 1563.9ms | ActiveRecord: 45.1ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2011-07-13 15:21:02 +0300
+Compiled ~/todo/app/assets/stylesheets/application.css  (14ms)  (pid 41436)
+Compiled ~/todo/app/assets/stylesheets/lists.css.scss  (186ms)  (pid 41436)
+Compiled ~/todo/app/assets/stylesheets/scaffolds.css.scss  (132ms)  (pid 41436)
+Compiled ~/todo/app/assets/stylesheets/todolists.css.scss  (39ms)  (pid 41436)
+Served asset /application.css - 304 Not Modified  (439ms)  (pid 41436)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2011-07-13 15:21:03 +0300
+Compiled ~/todo/app/assets/javascripts/application.js  (31ms)  (pid 41436)
+Compiled ~/.rvm/gems/ruby-1.9.2-p180@rails31/gems/jquery-rails-1.0.12/vendor/assets/javascripts/jquery.js  (9ms)  (pid 41436)
+Compiled ~/.rvm/gems/ruby-1.9.2-p180@rails31/gems/jquery-rails-1.0.12/vendor/assets/javascripts/jquery_ujs.js  (9ms)  (pid 41436)
+Compiled ~/todo/app/assets/javascripts/lists.js.coffee  (2654ms)  (pid 41436)
+Compiled ~/todo/app/assets/javascripts/todolists.js.coffee  (463ms)  (pid 41436)
+Served asset /application.js - 304 Not Modified  (3235ms)  (pid 41436)
+
+
+Started POST "/lists" for 127.0.0.1 at 2011-07-13 15:21:10 +0300
+  Processing by ListsController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xkeIU3d/y4N+bEPs7j6gePk/9z6WCiF9a29hpDczcVs=", "list"=>{"name"=>"6", "sorting"=>"0", "published"=>"0", "taskview"=>"0"}}
+  [1m[35m (1.0ms)[0m  BEGIN
+  [1m[36mSQL (29.7ms)[0m  [1mINSERT INTO `lists` (`created_at`, `name`, `ow`, `published`, `sorting`, `taskview`, `updated_at`, `uuid`) VALUES ('2011-07-13 12:21:10', '6', 0, 0, 0, 0, '2011-07-13 12:21:10', '')[0m
+  [1m[35m (7.2ms)[0m  COMMIT
+  [1m[36m (12.2ms)[0m  [1mSELECT COUNT(*) FROM `lists` [0m
+Rendered lists/create.js.erb (18.5ms)
+Completed 200 OK in 181ms (Views: 60.3ms | ActiveRecord: 57.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-13 15:23:06 +0300
+  Processing by ListsController#index as HTML
+  [1m[35mList Load (0.7ms)[0m  SELECT `lists`.* FROM `lists` 
+Rendered lists/index.html.erb within layouts/application (63.7ms)
+Completed 200 OK in 78ms (Views: 69.4ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2011-07-13 15:23:06 +0300
+Served asset /application.css - 304 Not Modified  (1ms)  (pid 41436)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2011-07-13 15:23:06 +0300
+Served asset /application.js - 304 Not Modified  (4ms)  (pid 41436)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-13 15:23:59 +0300
+  Processing by ListsController#index as HTML
+  [1m[36mList Load (0.8ms)[0m  [1mSELECT `lists`.* FROM `lists` [0m
+Rendered lists/index.html.erb within layouts/application (65.3ms)
+Completed 200 OK in 81ms (Views: 71.7ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2011-07-13 15:24:00 +0300
+Served asset /application.js - 304 Not Modified  (0ms)  (pid 41436)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2011-07-13 15:24:00 +0300
+Served asset /application.css - 304 Not Modified  (1ms)  (pid 41436)
+
+
+Started POST "/lists" for 127.0.0.1 at 2011-07-13 15:24:05 +0300
+  Processing by ListsController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xkeIU3d/y4N+bEPs7j6gePk/9z6WCiF9a29hpDczcVs=", "list"=>{"name"=>"7", "sorting"=>"0", "published"=>"0", "taskview"=>"0"}}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO `lists` (`created_at`, `name`, `ow`, `published`, `sorting`, `taskview`, `updated_at`, `uuid`) VALUES ('2011-07-13 12:24:05', '7', 0, 0, 0, 0, '2011-07-13 12:24:05', '')[0m
+  [1m[35m (1.2ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `lists` [0m
+Rendered lists/create.js.erb (5.6ms)
+Completed 200 OK in 43ms (Views: 13.3ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-13 15:27:23 +0300
+  Processing by ListsController#index as HTML
+  [1m[35mList Load (24.1ms)[0m  SELECT `lists`.* FROM `lists` 
+Rendered lists/index.html.erb within layouts/application (3166.9ms)
+Completed 200 OK in 3438ms (Views: 3354.9ms | ActiveRecord: 72.7ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2011-07-13 15:27:31 +0300
+Served asset /application.css - 304 Not Modified  (1ms)  (pid 41436)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2011-07-13 15:27:31 +0300
+Served asset /application.js - 304 Not Modified  (1ms)  (pid 41436)
+
+
+Started POST "/lists" for 127.0.0.1 at 2011-07-13 15:27:44 +0300
+  Processing by ListsController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xkeIU3d/y4N+bEPs7j6gePk/9z6WCiF9a29hpDczcVs=", "list"=>{"name"=>"8", "sorting"=>"0", "published"=>"0", "taskview"=>"0"}}
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (16.9ms)[0m  INSERT INTO `lists` (`created_at`, `name`, `ow`, `published`, `sorting`, `taskview`, `updated_at`, `uuid`) VALUES ('2011-07-13 12:27:44', '8', 0, 0, 0, 0, '2011-07-13 12:27:44', '')
+  [1m[36m (4.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM `lists` 
+Rendered lists/create.js.erb (28.6ms)
+Completed 200 OK in 390ms (Views: 145.2ms | ActiveRecord: 43.7ms)
+
+
+Started DELETE "/lists/10" for 127.0.0.1 at 2011-07-13 15:27:50 +0300
+  Processing by ListsController#destroy as JS
+  Parameters: {"id"=>"10"}
+  [1m[36mList Load (26.2ms)[0m  [1mSELECT `lists`.* FROM `lists` WHERE `lists`.`id` = 10 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (29.9ms)[0m  [1mDELETE FROM `lists` WHERE `lists`.`id` = 10[0m
+  [1m[35m (28.1ms)[0m  COMMIT
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM `lists` [0m
+Rendered lists/destroy.js.erb (65.3ms)
+Completed 200 OK in 1351ms (Views: 175.4ms | ActiveRecord: 194.5ms)
+
+
+Started DELETE "/lists/9" for 127.0.0.1 at 2011-07-13 15:27:59 +0300
+  Processing by ListsController#destroy as JS
+  Parameters: {"id"=>"9"}
+  [1m[35mList Load (0.9ms)[0m  SELECT `lists`.* FROM `lists` WHERE `lists`.`id` = 9 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  DELETE FROM `lists` WHERE `lists`.`id` = 9
+  [1m[36m (3.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  SELECT COUNT(*) FROM `lists` 
+Rendered lists/destroy.js.erb (10.7ms)
+Completed 200 OK in 213ms (Views: 61.1ms | ActiveRecord: 35.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-13 15:30:08 +0300
+  Processing by ListsController#index as HTML
+  [1m[36mList Load (1.5ms)[0m  [1mSELECT `lists`.* FROM `lists` [0m
+Rendered lists/index.html.erb within layouts/application (323.2ms)
+Completed 200 OK in 367ms (Views: 346.6ms | ActiveRecord: 10.3ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2011-07-13 15:30:10 +0300
+Served asset /application.js - 304 Not Modified  (48ms)  (pid 41436)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2011-07-13 15:30:10 +0300
+Served asset /application.css - 304 Not Modified  (1ms)  (pid 41436)
+
+
+Started DELETE "/lists/11" for 127.0.0.1 at 2011-07-13 15:30:16 +0300
+  Processing by ListsController#destroy as JS
+  Parameters: {"id"=>"11"}
+  [1m[35mList Load (0.8ms)[0m  SELECT `lists`.* FROM `lists` WHERE `lists`.`id` = 11 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.2ms)[0m  DELETE FROM `lists` WHERE `lists`.`id` = 11
+  [1m[36m (4.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (1.2ms)[0m  SELECT COUNT(*) FROM `lists` 
+Rendered lists/destroy.js.erb (18.3ms)
+Completed 200 OK in 180ms (Views: 35.3ms | ActiveRecord: 39.7ms)
+
+
+Started POST "/lists" for 127.0.0.1 at 2011-07-13 15:30:21 +0300
+  Processing by ListsController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xkeIU3d/y4N+bEPs7j6gePk/9z6WCiF9a29hpDczcVs=", "list"=>{"name"=>"6", "sorting"=>"0", "published"=>"0", "taskview"=>"0"}}
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.5ms)[0m  INSERT INTO `lists` (`created_at`, `name`, `ow`, `published`, `sorting`, `taskview`, `updated_at`, `uuid`) VALUES ('2011-07-13 12:30:21', '6', 0, 0, 0, 0, '2011-07-13 12:30:21', '')
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  SELECT COUNT(*) FROM `lists` 
+Rendered lists/create.js.erb (24.0ms)
+Completed 200 OK in 270ms (Views: 52.6ms | ActiveRecord: 9.1ms)
+
+
+Started DELETE "/lists/8" for 127.0.0.1 at 2011-07-13 15:30:25 +0300
+  Processing by ListsController#destroy as JS
+  Parameters: {"id"=>"8"}
+  [1m[36mList Load (0.9ms)[0m  [1mSELECT `lists`.* FROM `lists` WHERE `lists`.`id` = 8 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (16.1ms)[0m  [1mDELETE FROM `lists` WHERE `lists`.`id` = 8[0m
+  [1m[35m (1.3ms)[0m  COMMIT
+  [1m[36m (1.9ms)[0m  [1mSELECT COUNT(*) FROM `lists` [0m
+Rendered lists/destroy.js.erb (13.1ms)
+Completed 200 OK in 242ms (Views: 68.6ms | ActiveRecord: 32.1ms)
+
+
+Started DELETE "/lists/7" for 127.0.0.1 at 2011-07-13 15:30:28 +0300
+  Processing by ListsController#destroy as JS
+  Parameters: {"id"=>"7"}
+  [1m[35mList Load (1.2ms)[0m  SELECT `lists`.* FROM `lists` WHERE `lists`.`id` = 7 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.1ms)[0m  DELETE FROM `lists` WHERE `lists`.`id` = 7
+  [1m[36m (2.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (7.8ms)[0m  SELECT COUNT(*) FROM `lists` 
+Rendered lists/destroy.js.erb (23.3ms)
+Completed 200 OK in 241ms (Views: 43.1ms | ActiveRecord: 39.0ms)
+
+
+Started DELETE "/lists/6" for 127.0.0.1 at 2011-07-13 15:30:31 +0300
+  Processing by ListsController#destroy as JS
+  Parameters: {"id"=>"6"}
+  [1m[36mList Load (0.8ms)[0m  [1mSELECT `lists`.* FROM `lists` WHERE `lists`.`id` = 6 LIMIT 1[0m
+  [1m[35m (10.2ms)[0m  BEGIN
+  [1m[36mSQL (8.1ms)[0m  [1mDELETE FROM `lists` WHERE `lists`.`id` = 6[0m
+  [1m[35m (3.1ms)[0m  COMMIT
+  [1m[36m (207.5ms)[0m  [1mSELECT COUNT(*) FROM `lists` [0m
+Rendered lists/destroy.js.erb (218.4ms)
+Completed 200 OK in 364ms (Views: 54.8ms | ActiveRecord: 235.2ms)
+
+
+Started POST "/lists" for 127.0.0.1 at 2011-07-13 15:33:10 +0300
+  Processing by ListsController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xkeIU3d/y4N+bEPs7j6gePk/9z6WCiF9a29hpDczcVs=", "list"=>{"name"=>"7", "sorting"=>"0", "published"=>"0", "taskview"=>"0"}}
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mSQL (22.8ms)[0m  [1mINSERT INTO `lists` (`created_at`, `name`, `ow`, `published`, `sorting`, `taskview`, `updated_at`, `uuid`) VALUES ('2011-07-13 12:33:10', '7', 0, 0, 0, 0, '2011-07-13 12:33:10', '')[0m
+  [1m[35m (1.2ms)[0m  COMMIT
+  [1m[36m (14.5ms)[0m  [1mSELECT COUNT(*) FROM `lists` [0m
+Rendered lists/create.js.erb (34.3ms)
+Completed 200 OK in 243ms (Views: 72.4ms | ActiveRecord: 55.5ms)
+
+
+Started POST "/lists" for 127.0.0.1 at 2011-07-13 15:34:10 +0300
+  Processing by ListsController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xkeIU3d/y4N+bEPs7j6gePk/9z6WCiF9a29hpDczcVs=", "list"=>{"name"=>"8", "sorting"=>"0", "published"=>"0", "taskview"=>"0"}}
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mSQL (6.2ms)[0m  [1mINSERT INTO `lists` (`created_at`, `name`, `ow`, `published`, `sorting`, `taskview`, `updated_at`, `uuid`) VALUES ('2011-07-13 12:34:11', '8', 0, 0, 0, 0, '2011-07-13 12:34:11', '')[0m
+  [1m[35m (1.1ms)[0m  COMMIT
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM `lists` [0m
+Rendered lists/create.js.erb (18.5ms)
+Completed 200 OK in 134ms (Views: 45.5ms | ActiveRecord: 14.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-13 15:34:12 +0300
+  Processing by ListsController#index as HTML
+  [1m[35mList Load (7.3ms)[0m  SELECT `lists`.* FROM `lists` 
+Rendered lists/index.html.erb within layouts/application (284.1ms)
+Completed 200 OK in 335ms (Views: 308.0ms | ActiveRecord: 14.7ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2011-07-13 15:34:13 +0300
+Served asset /application.js - 304 Not Modified  (1ms)  (pid 41436)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2011-07-13 15:34:13 +0300
+Served asset /application.css - 304 Not Modified  (2ms)  (pid 41436)
+
+
+Started POST "/lists" for 127.0.0.1 at 2011-07-13 15:34:19 +0300
+  Processing by ListsController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xkeIU3d/y4N+bEPs7j6gePk/9z6WCiF9a29hpDczcVs=", "list"=>{"name"=>"9", "sorting"=>"0", "published"=>"0", "taskview"=>"0"}}
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (12.9ms)[0m  INSERT INTO `lists` (`created_at`, `name`, `ow`, `published`, `sorting`, `taskview`, `updated_at`, `uuid`) VALUES ('2011-07-13 12:34:19', '9', 0, 0, 0, 0, '2011-07-13 12:34:19', '')
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  SELECT COUNT(*) FROM `lists` 
+Rendered lists/create.js.erb (10.3ms)
+Completed 200 OK in 145ms (Views: 37.5ms | ActiveRecord: 20.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-13 15:34:48 +0300
+  Processing by ListsController#index as HTML
+  [1m[36mList Load (2.5ms)[0m  [1mSELECT `lists`.* FROM `lists` [0m
+Rendered lists/index.html.erb within layouts/application (182.0ms)
+Completed 200 OK in 235ms (Views: 211.4ms | ActiveRecord: 9.2ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2011-07-13 15:34:49 +0300
+Served asset /application.js - 304 Not Modified  (2ms)  (pid 41436)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2011-07-13 15:34:49 +0300
+Served asset /application.css - 304 Not Modified  (395ms)  (pid 41436)
+
+
+Started POST "/lists" for 127.0.0.1 at 2011-07-13 15:34:54 +0300
+  Processing by ListsController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xkeIU3d/y4N+bEPs7j6gePk/9z6WCiF9a29hpDczcVs=", "list"=>{"name"=>"10", "sorting"=>"0", "published"=>"0", "taskview"=>"0"}}
+  [1m[35m (0.8ms)[0m  BEGIN
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO `lists` (`created_at`, `name`, `ow`, `published`, `sorting`, `taskview`, `updated_at`, `uuid`) VALUES ('2011-07-13 12:34:54', '10', 0, 0, 0, 0, '2011-07-13 12:34:54', '')[0m
+  [1m[35m (2.8ms)[0m  COMMIT
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM `lists` [0m
+Rendered lists/create.js.erb (13.0ms)
+Completed 200 OK in 119ms (Views: 36.9ms | ActiveRecord: 11.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-13 15:36:11 +0300
+  Processing by ListsController#index as HTML
+  [1m[35mList Load (2.5ms)[0m  SELECT `lists`.* FROM `lists` 
+Rendered lists/index.html.erb within layouts/application (167.9ms)
+Completed 200 OK in 216ms (Views: 180.6ms | ActiveRecord: 10.8ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2011-07-13 15:36:12 +0300
+Served asset /application.js - 304 Not Modified  (4ms)  (pid 41436)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2011-07-13 15:36:13 +0300
+Served asset /application.css - 304 Not Modified  (1ms)  (pid 41436)
+
+
+Started POST "/lists" for 127.0.0.1 at 2011-07-13 15:36:20 +0300
+  Processing by ListsController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xkeIU3d/y4N+bEPs7j6gePk/9z6WCiF9a29hpDczcVs=", "list"=>{"name"=>"11", "sorting"=>"0", "published"=>"0", "taskview"=>"0"}}
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO `lists` (`created_at`, `name`, `ow`, `published`, `sorting`, `taskview`, `updated_at`, `uuid`) VALUES ('2011-07-13 12:36:21', '11', 0, 0, 0, 0, '2011-07-13 12:36:21', '')
+  [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM `lists` 
+Rendered lists/create.js.erb (20.6ms)
+Completed 200 OK in 142ms (Views: 39.7ms | ActiveRecord: 16.2ms)
+
+
+Started DELETE "/lists/17" for 127.0.0.1 at 2011-07-13 15:36:29 +0300
+  Processing by ListsController#destroy as JS
+  Parameters: {"id"=>"17"}
+  [1m[36mList Load (0.4ms)[0m  [1mSELECT `lists`.* FROM `lists` WHERE `lists`.`id` = 17 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (2.8ms)[0m  [1mDELETE FROM `lists` WHERE `lists`.`id` = 17[0m
+  [1m[35m (3.3ms)[0m  COMMIT
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `lists` [0m
+Rendered lists/destroy.js.erb (4.8ms)
+Completed 200 OK in 100ms (Views: 13.6ms | ActiveRecord: 10.8ms)
+
+
+Started POST "/lists" for 127.0.0.1 at 2011-07-13 15:36:33 +0300
+  Processing by ListsController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xkeIU3d/y4N+bEPs7j6gePk/9z6WCiF9a29hpDczcVs=", "list"=>{"name"=>"11", "sorting"=>"0", "published"=>"0", "taskview"=>"0"}}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (2.8ms)[0m  [1mINSERT INTO `lists` (`created_at`, `name`, `ow`, `published`, `sorting`, `taskview`, `updated_at`, `uuid`) VALUES ('2011-07-13 12:36:33', '11', 0, 0, 0, 0, '2011-07-13 12:36:33', '')[0m
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `lists` [0m
+Rendered lists/create.js.erb (6.4ms)
+Completed 200 OK in 48ms (Views: 15.0ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-13 15:36:59 +0300
+  Processing by ListsController#index as HTML
+  [1m[35mList Load (1.0ms)[0m  SELECT `lists`.* FROM `lists` 
+Rendered lists/index.html.erb within layouts/application (53.9ms)
+Completed 200 OK in 66ms (Views: 59.1ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2011-07-13 15:36:59 +0300
+Served asset /application.css - 304 Not Modified  (0ms)  (pid 41436)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2011-07-13 15:36:59 +0300
+Served asset /application.js - 304 Not Modified  (0ms)  (pid 41436)
+
+
+Started POST "/lists" for 127.0.0.1 at 2011-07-13 15:37:02 +0300
+  Processing by ListsController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xkeIU3d/y4N+bEPs7j6gePk/9z6WCiF9a29hpDczcVs=", "list"=>{"name"=>"12", "sorting"=>"0", "published"=>"0", "taskview"=>"0"}}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO `lists` (`created_at`, `name`, `ow`, `published`, `sorting`, `taskview`, `updated_at`, `uuid`) VALUES ('2011-07-13 12:37:02', '12', 0, 0, 0, 0, '2011-07-13 12:37:02', '')
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `lists` 
+Rendered lists/create.js.erb (5.5ms)
+Completed 200 OK in 41ms (Views: 12.9ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-07-13 15:37:09 +0300
+  Processing by ListsController#index as HTML
+  [1m[36mList Load (1.1ms)[0m  [1mSELECT `lists`.* FROM `lists` [0m
+Rendered lists/index.html.erb within layouts/application (98.8ms)
+Completed 200 OK in 114ms (Views: 103.2ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2011-07-13 15:37:09 +0300
+Served asset /application.js - 304 Not Modified  (0ms)  (pid 41436)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2011-07-13 15:37:09 +0300
+Served asset /application.css - 304 Not Modified  (1ms)  (pid 41436)
+
+
+Started POST "/lists" for 127.0.0.1 at 2011-07-13 15:37:13 +0300
+  Processing by ListsController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xkeIU3d/y4N+bEPs7j6gePk/9z6WCiF9a29hpDczcVs=", "list"=>{"name"=>"13", "sorting"=>"0", "published"=>"0", "taskview"=>"0"}}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `lists` (`created_at`, `name`, `ow`, `published`, `sorting`, `taskview`, `updated_at`, `uuid`) VALUES ('2011-07-13 12:37:13', '13', 0, 0, 0, 0, '2011-07-13 12:37:13', '')[0m
+  [1m[35m (1.2ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `lists` [0m
+Rendered lists/create.js.erb (4.9ms)
+Completed 200 OK in 77ms (Views: 11.5ms | ActiveRecord: 4.9ms)

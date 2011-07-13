@@ -1,4 +1,4 @@
 $("#list_count").html("<%= pluralize(List.count, 'List') %>");
-$("#lists").append("<div> <%= @list.name %> <%= @list.sorting %>  <%= @list.published %> <%= @list.taskview %> <a href='/lists/<%= @list.id %>'>Show</a>|<a href='/lists/<%= @list.id %>/edit'>Edit</a>|<a href='/lists/<%= @list.id %>' data-confirm='Are you sure?' data-method='delete' rel='nofollow'>Destroy</a><div>");
-$("#list<%= @list.id %>").effect("highlight", {}, 3000);
+$("#lists").append("<div id = 'list_<%= @list.id %>'> <%= @list.name %> <%= @list.sorting %>  <%= @list.published %> <%= @list.taskview %> <a href='/lists/<%= @list.id %>'>Show</a>|<a href='/lists/<%= @list.id %>/edit'>Edit</a>|<a href='/lists/<%= @list.id %>' data-confirm='Are you sure?' data-method='delete' data-remote='true' rel='nofollow'>Destroy</a><div>");
+$("#list_<%= @list.id %>").fadein(3000);
 $("#new_list")[0].reset();

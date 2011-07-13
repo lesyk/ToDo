@@ -14,11 +14,10 @@
 </table>
 <div id = "lists">
 <% @lists.each do |list| %>
-<div>
-    <%= list.name %> <%= list.sorting %>  <%= list.published %> <%= list.taskview %> <%= link_to 'Show', list %>|<%= link_to 'Edit', edit_list_path(list) %>|<%= link_to 'Destroy', list, confirm: 'Are you sure?', method: :delete %>
+<div id = "list_<%= list.id %>">
+<%= list.name %> <%= list.sorting %>  <%= list.published %> <%= list.taskview %> <%= link_to 'Show', list %>|<%= link_to 'Edit', edit_list_path(list) %>|<%= link_to 'Destroy', list, confirm: 'Are you sure?', method: :delete, :remote =>  true %>
 </div>
 <% end %>
-	<div id = "list_new"></div>
 </div>
 
 <br />
