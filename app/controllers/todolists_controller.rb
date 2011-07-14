@@ -40,7 +40,10 @@ class TodolistsController < ApplicationController
   def create
      @list = List.find(params[:list_id])
      @todolist = @list.todolists.create(params[:todolist])
-     redirect_to list_path(@list)
+     #redirect_to list_path(@list)
+     respond_to do |format|
+         format.js
+     end
    end
 
   # PUT /todolists/1
@@ -66,8 +69,7 @@ class TodolistsController < ApplicationController
     @todolist.destroy
 
     respond_to do |format|
-      format.html { redirect_to todolists_url }
-      format.json { head :ok }
+      format.js
     end
   end
   

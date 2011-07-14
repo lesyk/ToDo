@@ -3,22 +3,25 @@ class ListsController < ApplicationController
   # GET /lists.json
   def index
     @lists = List.all
-    @list = List.new
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @lists }
-    end
+    @listCreateNew = List.new
+    
+    show
+    
   end
 
   # GET /lists/1
   # GET /lists/1.json
   def show
-    @list = List.find(params[:id])
+    if params[:id]
+      @list = List.find(params[:id])
+    else
+      @list = List.first
+    end
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @list }
+      format.js
     end
   end
 

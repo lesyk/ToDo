@@ -24,6 +24,10 @@ $(document).ready(function() {
   $("#new_list").submitWithAjax();
 })
 
+$(document).ready(function() {
+  $("#new_todolist").submitWithAjax();
+})
+
 function showCreateNewList() {
   $("#new_list_form").show("slow");
 }
@@ -31,3 +35,19 @@ function showCreateNewList() {
 function hideCreateNewList() {
   $("#new_list_form").hide("slow");
 }
+
+function showCreateNewTodolist() {
+  $("#new_todolist_form").show("slow");
+}
+
+function hideCreateNewTodolist() {
+  $("#new_todolist_form").hide("slow");
+}
+
+$(function() {
+  $(".todolistLoadDiv a").live("click", function() {
+    $(".pagination").html("Page is loading...");
+    $.getScript(this.href);
+    return false;
+  });
+});
