@@ -4,11 +4,58 @@
   <title>Todo</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+	<div id="top">
+	    <div id="logo">
+	        <a href="#" id="img_logo">
+		<img src="/assets/rails.png" height="30px" alt="Todoist logo"></a>
+	    </div>
+	    <div id="top_right" class="actions">
+	        <a href="#" class="action info_page" onclick="return InfoPage.toggle(this)" id="info_page">Help</a>
+	        <a href="/Users/viewPrefs" class="action dark" onclick="return GB_show('Todoist preferences', this.href, 550, 750)">Preferences</a>
+	        <a href="/Users/logout" class="action dark" id="logout">Logout</a>
+	    </div>
+	    <div id="notifier" style="left: 640px; top: 0px; display: none; "></div>
+	    <div id="indicator"></div>
+	</div>
+	
+	<div id="content">
+	    <table cellpadding="0" cellspacing="0">
+	        <tbody>
+		<tr>
+	            <td>
+	                <div id="list">
+						<ul class="items" id="agenda"><li><div id="agenda_box"><form><input class="input_q" type="text" placeholder="Filter tasks..."><table class="item_table"><tbody><tr><td><a href="#" class="action" onclick="return Agenda.queryFix(&quot;today&quot;)" id="today_link">today</a><a href="#" class="action" onclick="return Agenda.queryFix(&quot;7 days&quot;)">7 days</a><a href="#" class="action" onclick="return Agenda.queryFix(&quot;@&quot;)"> @ </a><a href="#" class="action" onclick="return Agenda.queryFix(&quot;q:&quot;)"> q: </a><a href="#" class="action more icon" style="padding-bottom: 2px; " onclick="return AgendaMenu.toggle(this, this);">more</a></td>
+							</tr></tbody></table></form></div></li></ul>
+
+						<%= render "lists" %>
+	                </div>
+	            </td>
+
+	            <td id="editor">
+		<div class="list_editor">
+			<h2 class="project_header">
+				<div class="view_holder">
+					<img src="/assets/76084e29cb2cf72b320e888edc583dfb.gif" width="16" height="16" class="cmp_print_off">
+					<img src="/assets/76084e29cb2cf72b320e888edc583dfb.gif" width="16" height="16" class="cmp_email_off">
+					<img src="/assets/76084e29cb2cf72b320e888edc583dfb.gif" width="16" height="16" class="cmp_gear_off icon"></div><span>new</span></h2><ul class="items" id="project_editor"><li class="empty">No tasks</li></ul></div><div class="controller actions" id="pe_items_controller"><a href="" class="action">Add task</a><a href="" class=" disabled">Reorder</a></div><div class="list_editor history"><div class="history_desc"><ul class="items history" id="project_history"></ul></div></div><div class="controller actions his_ctrl"><a href="" class="disabled" style="float: right; margin-right: 0px; ">Delete completed</a><a href="#" class="action dimmed">Get completed tasks (<span>0</span>)</a></div></td>
+	        </tr>
+	    </tbody>
+	</table>
+	</div>
+
 <%= yield %>
+
+
+<div id="bottom"> © ToDo 
+	<a href="/Help/viewPrivacyPolicy" class="action" onclick="return GB_show('Privacy Policy','/Help/viewPrivacyPolicy',450,500)">Privacy Policy</a>
+        <a href="#" class="action" onclick="return GB_show('About Us', '/aboutUs', 570, 700)">About Us</a>
+        <a href="#" class="action" target="_blank">Support</a>
+</div>
 
 </body>
 </html>

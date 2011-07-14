@@ -1,0 +1,58 @@
+<ul id="project_list" class="items">
+	<% @lists.each do |list| %>
+	<li class="clickable indent_1" id="list_<%= list.id %>" onmouseover="showMenuIcon(<%= list.id %>)" onmouseout="hideMenuIcon(<%= list.id %>)">
+		<table cellpadding="0" cellspacing="0" class="item_table">
+			<tbody>
+				<tr>
+					<td class="counter">
+						<div class="div_counter" style="color: black; background-color: rgb(221, 221, 221); ">1</div>
+					</td>
+					<td>
+						<div class="td_separator" style="width: 1px; "></div>
+					</td>
+					<td class="name"><%= list.name %></td>
+					<td class="name"><%= link_to 'Edit', edit_list_path(list), :remote =>  true %></td>
+					<td class="name">|<%= link_to 'Destroy', list, confirm: 'Are you sure?', method: :delete, :remote =>  true %></td>
+					<td class="menu">
+						<div class="icon menu cmp_gear_off" id="menu_icon_<%= list.id %>" style="display: none; "></div>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</li>
+		<% end %>
+</ul>
+
+<ul class="items">
+	<li class="manager indent_1" style="display: none;" id="new_list_form">
+	<%= form_for(@list, :remote => true) do |f| %>
+		<% if @list.errors.any? %>
+			<div id="error_explanation">
+			<h2><%= pluralize(@list.errors.count, "error") %> prohibited this list from being saved:</h2>
+			      <ul>
+			      <% @list.errors.full_messages.each do |msg| %>
+			        <li><%= msg %></li>
+			      <% end %>
+			      </ul>
+			    </div>
+		<% end %>
+	
+	<table width="100%"><tbody>
+		<tr><td colspan="2" class="form_content">
+			<%= f.text_area :name, :class => "text_box auto_exapnd_ta", :autocomplete => "off", :style => "height: 19px;width: 187px;" %>
+			</td></tr>
+		<tr><td>
+			<%= f.submit %>
+			<a onclick="hideCreateNewList()" class="cancel" href="#" tabindex="4">Cancel</a>
+		</td>
+		<td align="right"></td>
+		</tr>
+	</tbody></table>
+	<% end %>
+	</li>
+</ul>
+	
+	<div id="project_man" class="actions">
+		<a onclick="showCreateNewList()" href="#" class="action">Add project</a>
+		<a href="#" class="action">Reorder</a>
+	</div>

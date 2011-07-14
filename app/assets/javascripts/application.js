@@ -23,3 +23,11 @@ jQuery.fn.submitWithAjax = function() {
 $(document).ready(function() {
   $("#new_list").submitWithAjax();
 })
+
+function showCreateNewList() {
+  $("#new_list_form").show("slow");
+}
+
+function hideCreateNewList() {
+  $("#new_list_form").hide("slow");
+}

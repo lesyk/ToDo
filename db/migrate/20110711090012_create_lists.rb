@@ -5,9 +5,9 @@ class CreateLists < ActiveRecord::Migration
          t.string :uuid, :null => false, :default => '', :unique => true
          t.integer :ow, :null => false, :default => 0
          t.string :name, :null => false, :default => ''
-         t.integer :sorting, :null => false, :unsigned => true, :default => 0
-         t.integer :published, :null => false, :unsigned => true, :default => 0
-         t.integer :taskview, :null => false, :default => 0
+         t.integer :sorting, :unsigned => true, :default => 0
+         t.integer :published, :unsigned => true, :default => 0
+         t.integer :taskview, :default => 0
 
       t.timestamps
     end
