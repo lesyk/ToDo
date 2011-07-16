@@ -4,7 +4,7 @@
 			<img src="" width="16" height="16" class="cmp_print_off"><img src="" width="16" height="16" class="cmp_email_off"><img src="" width="16" height="16" class="cmp_gear_off icon">
 		</div>
 		
-		<span><%= @list.name%></span></h2>
+		<span><%= @list.name %></span></h2>
 		
 		<ul class="items" id="todolists">
 			<% @list.todolists.each do |todolist| %>
@@ -15,7 +15,7 @@
 							<span class="date empty"></span></div>
 							<span class="text"><%= todolist.title %>
 							<span class="clickable note_icon">
-							<%= link_to 'Show', todolist %>|<%= link_to 'Edit', edit_todolist_path(todolist) %>|<%= link_to 'Destroy', todolist, confirm: 'Are you sure?', method: :delete %>
+							<%= link_to 'Show', todolist %>|<%= link_to 'Edit', edit_todolist_path(todolist) %>|<%= link_to 'Destroy', todolist, confirm: 'Are you sure?', method: :delete, :remote =>  true %>
 							</span>
 							</span>
 						</td>

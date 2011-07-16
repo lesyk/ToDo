@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(:version => 20110712094011) do
     t.string   "uuid",       :default => "", :null => false
     t.integer  "ow",         :default => 0,  :null => false
     t.string   "name",       :default => "", :null => false
-    t.integer  "sorting",    :default => 0,  :null => false
-    t.integer  "published",  :default => 0,  :null => false
-    t.integer  "taskview",   :default => 0,  :null => false
+    t.integer  "sorting",    :default => 0
+    t.integer  "published",  :default => 0
+    t.integer  "taskview",   :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

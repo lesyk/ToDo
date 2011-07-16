@@ -8,26 +8,6 @@
 //= require jquery_ujs
 //= require_tree .
 
-jQuery.ajaxSetup({ 
-  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
-})
-
-jQuery.fn.submitWithAjax = function() {
-  this.submit(function() {
-    $.post(this.action, $(this).serialize(), null, "script");
-    return false;
-  })
-  return this;
-};
-
-$(document).ready(function() {
-  $("#new_list").submitWithAjax();
-})
-
-$(document).ready(function() {
-  $("#new_todolist").submitWithAjax();
-})
-
 function showCreateNewList() {
   $("#new_list_form").show("slow");
 }
@@ -44,10 +24,43 @@ function hideCreateNewTodolist() {
   $("#new_todolist_form").hide("slow");
 }
 
-$(function() {
-  $(".todolistLoadDiv a").live("click", function() {
-    $(".pagination").html("Page is loading...");
-    $.getScript(this.href);
+jQuery.ajaxSetup({ 
+  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+})
+
+jQuery.fn.submitWithAjax = function() {
+  this.submit(function() {
+    $.post(this.action, $(this).serialize(), null, "script");
     return false;
+  })
+  return this;
+};
+
+$(document).ready(function() {
+  	$("#new_list").submitWithAjax();
+	
+	$("#new_todolist").submitWithAjax();
+	
+	$("#new_todolist").live('click', function(e){
+  		$.rails.handleRemote($("#new_todolist"));
+      	e.preventDefault();
+   	});
+})
+
+$(function() {
+  $(".todolistLoadDiv a").live("click", function(event) {
+    $.getScript(this.href);
+
+	//create empty handlers for todolist links
+	//...todolists
+
+
+	//create empty handlers for new form
+	$("#new_todolist").live('submit', function(e){
+    	$.rails.handleRemote($("#new_todolist"));
+        e.preventDefault();
+     });
+	
+	return false;
   });
 });

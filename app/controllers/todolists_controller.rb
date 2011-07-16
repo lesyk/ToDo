@@ -38,12 +38,17 @@ class TodolistsController < ApplicationController
   end
   
   def create
-     @list = List.find(params[:list_id])
-     @todolist = @list.todolists.create(params[:todolist])
-     #redirect_to list_path(@list)
-     respond_to do |format|
-         format.js
-     end
+     if params[:commit]
+       @list = List.find(params[:list_id])
+        @todolist = @list.todolists.create(params[:todolist])
+
+
+        respond_to do |format|
+          format.js
+        end
+      else
+        render :nothing => true
+      end
    end
 
   # PUT /todolists/1
