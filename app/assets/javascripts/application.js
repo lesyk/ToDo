@@ -24,6 +24,14 @@ function hideCreateNewTodolist() {
   $("#new_todolist_form").hide("slow");
 }
 
+function showTodolistDescription(id) {
+  $("#todolist_desc_" + id).show("slow");
+}
+
+function hideTodolistDescription(id) {
+  $("#todolist_desc_" + id).hide("slow");
+}
+
 jQuery.ajaxSetup({ 
   'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
 })

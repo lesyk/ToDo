@@ -4,26 +4,46 @@
 			<img src="" width="16" height="16" class="cmp_print_off"><img src="" width="16" height="16" class="cmp_email_off"><img src="" width="16" height="16" class="cmp_gear_off icon">
 		</div>
 		
-		<span><%= @list.name %></span></h2>
+		<span><div style="word-wrap:break-word; width:530px;" id="nameoflists"><%= @list.name %></div></span></h2>
 		
 		<ul class="items" id="todolists">
 			<% @list.todolists.each do |todolist| %>
-			<li class="task_item indent_1 priority_1" id="todolist_<%= todolist.id %>" style=""><table cellpadding="0" cellspacing="0">
+			<li class="task_item indent_1 priority_1" id="todolist_<%= todolist.id %>" >
+				<table cellpadding="0" cellspacing="0">
 				<tbody><tr>
 					<td class="checker"><div class="amicheckbox"><img src="" width="16" height="16" class="cmp_12_checkbox_off amicheckbox_img"></div></td>
 					<td class="text_cursor content"><div class="text_cursor div_due_date">
-							<span class="date empty"></span></div>
-							<span class="text"><%= todolist.title %>
-							<span class="clickable note_icon">
-							<%= link_to 'Show', todolist %>|<%= link_to 'Edit', edit_todolist_path(todolist) %>|<%= link_to 'Destroy', todolist, confirm: 'Are you sure?', method: :delete, :remote =>  true %>
-							</span>
+							<span class="date empty"><%= todolist.duedate %></span></div>
+							<span class="text"><div style="word-wrap:break-word; width:430px;"><a href="#" onclick="showTodolistDescription(<%= todolist.id %>)"><%= todolist.title %></a></div>
 							</span>
 						</td>
 						<td class="menu">
-							<div class="icon menu cmp_gear_off" style="visibility: hidden; "></div>
+							<div class="icon menu">
+								<%= link_to 'Destroy', todolist, confirm: 'Are you sure?', method: :delete, :remote =>  true, :class => "action" %>
+							</div>
 						</td>
 					</tr></tbody></table>
 				</li>
+				
+				<li class="task_item indent_1 priority_1" id="todolist_desc_<%= todolist.id %>" style="display: none;">
+					<table cellpadding="0" cellspacing="0">
+					<tbody><tr>
+						<td class="text_cursor content">
+								<span class="text">
+								<div style="word-wrap:break-word; width:580px;">
+								<%= todolist.note %>
+								<br/>Tags:<br/>
+								<span class="text"><%= todolist.tag_list %></span>
+								</div>
+							</td>
+							<td class="menu">
+								<a onclick="hideTodolistDescription(<%= todolist.id %>)" href="#" class="action">Hide</a>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+					</li>
+				
 				<% end %>
 			</ul>
 		</div>
@@ -33,7 +53,20 @@
 				<%= form_for([@list, @list.todolists.build]) do |f| %>
 					<table width="100%"><tbody>
 						<tr><td colspan="2" class="form_content">
-							    <%= f.text_field :title, :class => "text_box auto_exapnd_ta", :autocomplete => "off", :style => "height: 19px;"%></td>
+							Enter a Task title    
+							<%= f.text_field :title, :class => "text_box auto_exapnd_ta", :autocomplete => "off", :style => "height: 19px;"%></td>
+						</tr>
+						<tr><td colspan="2" class="form_content">
+							What needs to be done?
+							<%= f.text_area :note, :class => "text_box auto_exapnd_ta", :rows => "5", :autocomplete => "off"%></td>
+						</tr>
+						<tr><td align ="right" colspan="2" class="form_content">
+							Needs to be done before... optional<br/>
+							    <%= f.date_select :duedate, :default => Time.now, :include_blank => true, :start_year => Time.now.year, :class => "text_box auto_exapnd_ta", :autocomplete => "off"%></td>
+						</tr>
+						<tr><td colspan="2" class="form_content">
+								Tag List (Delimiter = ,)<br />
+							    <%= f.text_field :tag_list, :class => "text_box auto_exapnd_ta", :autocomplete => "off", :style => "height: 19px;"%></td>
 						</tr>
 						<tr>
 							<td>

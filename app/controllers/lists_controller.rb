@@ -78,6 +78,7 @@ class ListsController < ApplicationController
   # DELETE /lists/1.json
   def destroy
     @list = List.find(params[:id])
+    @todolist = Todolist.delete_all(["list_id = ?", params[:id]])
     @list.destroy
 
     respond_to do |format|
