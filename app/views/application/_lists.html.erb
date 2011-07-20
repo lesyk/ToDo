@@ -6,7 +6,8 @@
 			<tbody>
 				<tr>
 					<td class="counter">
-						<div class="div_counter" style="color: black; background-color: rgb(221, 221, 221); ">1</div>
+						<div class="div_counter" id="div_counter" style="color: black; background-color: rgb(221, 221, 221); ">
+						<%=pluralize(@list.todolists.count, "") %></div>
 					</td>
 					<td>
 						<div class="td_separator" style="width: 1px; "></div>

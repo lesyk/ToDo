@@ -59,8 +59,7 @@ $(function() {
   $(".todolistLoadDiv a").live("click", function(event) {
     $.getScript(this.href);
 
-	//create empty handlers for todolist links
-	//...todolists
+	$("#nameoflists").html("Page is loading...");
 
 
 	//create empty handlers for new form
