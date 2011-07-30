@@ -13,8 +13,19 @@
 				<tbody><tr>
 					<td class="checker"><div class="amicheckbox"><img src="" width="16" height="16" class="cmp_12_checkbox_off amicheckbox_img"></div></td>
 					<td class="text_cursor content"><div class="text_cursor div_due_date">
-							<span class="date empty"><%= todolist.duedate %></span></div>
-							<span class="text"><div style="word-wrap:break-word; width:430px;"><a href="#" onclick="showTodolistDescription(<%= todolist.id %>)"><%= todolist.title %></a></div>
+							<span class="date empty">
+								<%
+								if !todolist.duedate.blank?
+								t = Time.now
+								t.strftime("%Y/%m/%d")
+									if t < todolist.duedate %>
+										<%= todolist.duedate %>
+									<% else %>
+										<%= distance_of_time_in_words(todolist.duedate, t) %> days late
+									<% end
+								end %>
+							</span></div>
+							<span class="text"><div style="word-wrap:break-word; width:430px;"><a href="#" onclick="toggleTodolistDescription(<%= todolist.id %>)"><%= todolist.title %></a></div>
 							</span>
 						</td>
 						<td class="menu">
@@ -31,13 +42,15 @@
 						<td class="text_cursor content">
 								<span class="text">
 								<div style="word-wrap:break-word; width:580px;">
+								Desctiption: <br/>	
 								<%= todolist.note %>
+								<br/>
 								<br/>Tags:<br/>
 								<span class="text"><%= todolist.tag_list %></span>
 								</div>
 							</td>
 							<td class="menu">
-								<a onclick="hideTodolistDescription(<%= todolist.id %>)" href="#" class="action">Hide</a>
+								<a onclick="toggleTodolistDescription(<%= todolist.id %>)" href="#" class="action">Hide</a>
 							</td>
 						</tr>
 						</tbody>
@@ -71,7 +84,7 @@
 						<tr>
 							<td>
 								<%= f.submit %>
-								<a href="#" onclick="hideCreateNewTodolist()" class="cancel" href="" tabindex="4">I'm done adding tasks</a></td>
+								<a href="#" onclick="toggleCreateNewTodolist()" class="cancel" href="" tabindex="4">I'm done adding tasks</a></td>
 						</tr></tbody>
 					</table>
 					<% end %>
@@ -79,7 +92,7 @@
 		</ul>
 
 		<div class="controller actions" id="pe_items_controller">
-			<a onclick="showCreateNewTodolist()" href="#" class="action">Add task</a>
+			<a onclick="toggleCreateNewTodolist()" href="#" class="action">Add task</a>
 			<a href="#" class=" action">Reorder</a>
 		</div>
 

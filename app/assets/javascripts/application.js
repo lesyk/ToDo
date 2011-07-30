@@ -8,28 +8,16 @@
 //= require jquery_ujs
 //= require_tree .
 
-function showCreateNewList() {
-  $("#new_list_form").show("slow");
+function toggleCreateNewList() {
+  $("#new_list_form").toggle("slow");
 }
 
-function hideCreateNewList() {
-  $("#new_list_form").hide("slow");
+function toggleCreateNewTodolist() {
+  $("#new_todolist_form").toggle("slow");
 }
 
-function showCreateNewTodolist() {
-  $("#new_todolist_form").show("slow");
-}
-
-function hideCreateNewTodolist() {
-  $("#new_todolist_form").hide("slow");
-}
-
-function showTodolistDescription(id) {
-  $("#todolist_desc_" + id).show("slow");
-}
-
-function hideTodolistDescription(id) {
-  $("#todolist_desc_" + id).hide("slow");
+function toggleTodolistDescription(id) {
+  $("#todolist_desc_" + id).toggle("slow");
 }
 
 jQuery.ajaxSetup({ 
