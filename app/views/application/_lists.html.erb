@@ -12,7 +12,7 @@
 					<td>
 						<div class="td_separator" style="width: 1px; "></div>
 					</td>
-					<td class="name"><div style="word-wrap:break-word; width:100px;"><%= on_the_spot_edit list, :name %></div></td>
+					<td class="name"><div style="word-wrap:break-word; width:100px;"><%= on_the_spot_edit list, :name, :type => :textarea, :rows => 4, :columns => 13 %></div></td>
 					<td class="name">
 						<%= link_to 'Show', list, :remote =>  true %>
 						<%= link_to 'Destroy', list, confirm: 'Are you sure?', method: :delete, :remote =>  true %>
