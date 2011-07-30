@@ -60,6 +60,7 @@ class TodolistsController < ApplicationController
       if @todolist.update_attributes(params[:todolist])
         format.html { redirect_to @todolist, notice: 'Todolist was successfully updated.' }
         format.json { head :ok }
+        format.js
       else
         format.html { render action: "edit" }
         format.json { render json: @todolist.errors, status: :unprocessable_entity }

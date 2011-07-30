@@ -1,0 +1,40 @@
+<div id="ifSaved"></div>
+<%= form_for(@todolist, :remote => true) do |f| %>
+  <% if @todolist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@todolist.errors.count, "error") %> prohibited this todolist from being saved:</h2>
+
+      <ul>
+      <% @todolist.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br />
+    <%= f.text_field :note %>
+  </div>
+  <div class="field">
+    <%= f.label :prio %><br />
+    <%= f.number_field :prio %>
+  </div>
+  <div class="field">
+    <%= f.label :duedate %><br />
+    <%= f.date_select :duedate %>
+  </div>
+
+  <div class="field">
+	<%= f.label 'Tag List (Delimiter = ,)' %><br />
+	<%= f.text_field :tag_list %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %> | <%= link_to 'Back', list_path(@todolist.list_id), :remote =>  true, :class => "action" %>
+  </div>
+<% end %>

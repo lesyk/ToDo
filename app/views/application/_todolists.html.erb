@@ -1,3 +1,4 @@
+<div id="allLists">
 <div class="list_editor">
 	<h2 class="project_header">
 		<div class="view_holder">
@@ -5,7 +6,6 @@
 		</div>
 		
 		<span><div style="word-wrap:break-word; width:530px;" id="nameoflists"><%= @list.name %></div></span></h2>
-		
 		<ul class="items" id="todolists">
 			<% @list.todolists.each do |todolist| %>
 			<li class="task_item indent_1 priority_1" id="todolist_<%= todolist.id %>" >
@@ -30,6 +30,7 @@
 						</td>
 						<td class="menu">
 							<div class="icon menu">
+								<%= link_to 'Edit', edit_todolist_path(todolist), :remote =>  true, :class => "action" %>
 								<%= link_to 'Destroy', todolist, confirm: 'Are you sure?', method: :delete, :remote =>  true, :class => "action" %>
 							</div>
 						</td>
@@ -42,7 +43,7 @@
 						<td class="text_cursor content">
 								<span class="text">
 								<div style="word-wrap:break-word; width:580px;">
-								Desctiption: <br/>	
+								Description: <br/>	
 								<%= todolist.note %>
 								<br/>
 								<br/>Tags:<br/>
@@ -95,6 +96,7 @@
 			<a onclick="toggleCreateNewTodolist()" href="#" class="action">Add task</a>
 			<a href="#" class=" action">Reorder</a>
 		</div>
+</div>		
 
 		<div class="list_editor history">
 			<div class="history_desc">

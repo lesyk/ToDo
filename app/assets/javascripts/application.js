@@ -59,3 +59,17 @@ $(function() {
 	return false;
   });
 });
+
+$(function() {
+  $(".list_editor a").live("click", function(event) {
+    $.getScript(this.href);
+
+	//create empty handlers for new form
+	$("#new_todolist").live('submit', function(e){
+    	$.rails.handleRemote($("#new_todolist"));
+        e.preventDefault();
+     });
+	
+	return false;
+  });
+});
