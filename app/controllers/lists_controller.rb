@@ -1,4 +1,6 @@
 class ListsController < ApplicationController
+  can_edit_on_the_spot
+
   # GET /lists
   # GET /lists.json
   def index

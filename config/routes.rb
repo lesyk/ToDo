@@ -2,6 +2,9 @@ Todo::Application.routes.draw do
 
   resources :lists do
     resources :todolists
+    collection do
+      put :update_attribute_on_the_spot
+    end
   end
   
   resources :todolists do

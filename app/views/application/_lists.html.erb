@@ -12,8 +12,11 @@
 					<td>
 						<div class="td_separator" style="width: 1px; "></div>
 					</td>
-					<td class="name"><div style="word-wrap:break-word; width:100px;"><%= link_to list.name, list, :remote =>  true %></div></td>
-					<td class="name"><%= link_to 'Destroy', list, confirm: 'Are you sure?', method: :delete, :remote =>  true %></td>
+					<td class="name"><div style="word-wrap:break-word; width:100px;"><%= on_the_spot_edit list, :name %></div></td>
+					<td class="name">
+						<%= link_to 'Show', list, :remote =>  true %>
+						<%= link_to 'Destroy', list, confirm: 'Are you sure?', method: :delete, :remote =>  true %>
+					</td>
 				</tr>
 				</tbody>
 			</table>
