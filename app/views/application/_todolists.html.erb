@@ -14,7 +14,9 @@
 					<td class="text_cursor content"><div class="text_cursor div_due_date">
 							<span class="date empty">
 								<% if todolist.compl == 1%>
-								Done <%= todolist.d_completed%>
+								
+								<b>Done <%= todolist.d_completed%></b>
+								Priority <%= todolist.prio%>
 								<%else%>
 								<%
 								if !todolist.duedate.blank?
@@ -23,7 +25,8 @@
 									if t < todolist.duedate %>
 										<%= todolist.duedate %>
 									<% else %>
-										<%= distance_of_time_in_words(todolist.duedate, t) %> days late
+										<b><%= distance_of_time_in_words(todolist.duedate, t) %> days late</b>
+										Priority <%= todolist.prio%>
 									<% end
 								end %>
 								<%end%>
@@ -62,15 +65,11 @@
 								<span class="text"><%= todolist.tag_list %></span>
 								<br/>
 								<%= form_for(todolist, :remote => true) do |f| %>
-									<select id="todolist[compl]" name="todolist[compl]">
-									<% if todolist.compl == 1%>
-										<option value="0">Open</option>
-										<option value="1" selected="selected">Done</option>
-										<%else%>
-										<option value="0" selected="selected">Open</option>
-										<option value="1">Done</option>
-										<%end%>
-									</select>
+									Status 
+									<%=select_tag "todolist[compl]", options_for_select([["Open", "0"], ["Done", "1"]], todolist.compl)%>
+									|
+									Prio 
+									<%=select_tag "todolist[prio]", options_for_select([["-1", "-1"], ["0", "0"], ["1", "1"], ["2", "2"]], todolist.prio)%>
 									|
 									<span class="text"><%= f.date_select :duedate %>
 									<%= f.submit %></span>
