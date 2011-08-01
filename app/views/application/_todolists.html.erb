@@ -104,6 +104,10 @@
 							Needs to be done before... optional<br/>
 							    <%= f.date_select :duedate, :default => Time.now, :include_blank => true, :start_year => Time.now.year, :class => "text_box auto_exapnd_ta", :autocomplete => "off"%></td>
 						</tr>
+						<tr><td align ="right" colspan="2" class="form_content">
+							Prio 
+							<%=select_tag "todolist[prio]", options_for_select([["-1", "-1"], ["0", "0"], ["1", "1"], ["2", "2"]], "0")%>
+						</tr>
 						<tr><td colspan="2" class="form_content">
 								Tag List (Delimiter = ,)<br />
 							    <%= f.text_field :tag_list, :class => "text_box auto_exapnd_ta", :autocomplete => "off", :style => "height: 19px;"%></td>
