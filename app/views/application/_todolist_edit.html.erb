@@ -30,6 +30,19 @@
   </div>
 
   <div class="field">
+	<select id="todolist[compl]" name="todolist[compl]">
+    <%= f.label :compl %><br />
+	<% if @todolist.compl == 1%>
+		<option value="0">Open</option>
+		<option value="1" selected="selected">Done</option>
+		<%else%>
+		<option value="0" selected="selected">Open</option>
+		<option value="1">Done</option>
+		<%end%>
+	</select>
+  </div>
+
+  <div class="field">
 	<%= f.label 'Tag List (Delimiter = ,)' %><br />
 	<%= f.text_field :tag_list %>
   </div>

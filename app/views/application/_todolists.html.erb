@@ -11,9 +11,11 @@
 			<li class="task_item indent_1 priority_1" id="todolist_<%= todolist.id %>" >
 				<table cellpadding="0" cellspacing="0">
 				<tbody><tr>
-					<td class="checker"><div class="amicheckbox"><img src="" width="16" height="16" class="cmp_12_checkbox_off amicheckbox_img"></div></td>
 					<td class="text_cursor content"><div class="text_cursor div_due_date">
 							<span class="date empty">
+								<% if todolist.compl == 1%>
+								<strike>
+								<%end%>
 								<%
 								if !todolist.duedate.blank?
 								t = Time.now
@@ -25,16 +27,28 @@
 									<% end
 								end %>
 							</span></div>
-							<span class="text"><div style="word-wrap:break-word; width:430px;"><a href="#" onclick="toggleTodolistDescription(<%= todolist.id %>)"><%= todolist.title %></a></div>
+							<span class="text"><div style="word-wrap:break-word; width:430px;"><a href="#" onclick="toggleTodolistDescription(<%= todolist.id %>)">
+								<%= todolist.title %>
+								</a></div>
 							</span>
+							<% if todolist.compl == 1%>
+							</strike>
+							<%end%>
 						</td>
 						<td class="menu">
+							<% if todolist.compl == 1%>
+							<strike>
+							<%end%>
 							<div class="icon menu">
 								<%= link_to 'Edit', edit_todolist_path(todolist), :remote =>  true, :class => "action" %>
 								<%= link_to 'Destroy', todolist, confirm: 'Are you sure?', method: :delete, :remote =>  true, :class => "action" %>
 							</div>
+							<% if todolist.compl == 1%>
+							</strike>
+							<%end%>
 						</td>
-					</tr></tbody></table>
+					</tr>
+					</tbody></table>
 				</li>
 				
 				<li class="task_item indent_1 priority_1" id="todolist_desc_<%= todolist.id %>" style="display: none;">
@@ -48,6 +62,21 @@
 								<br/>
 								<br/>Tags:<br/>
 								<span class="text"><%= todolist.tag_list %></span>
+								<br/>
+								<%= form_for(todolist, :remote => true) do |f| %>
+									<select id="todolist[compl]" name="todolist[compl]">
+									<% if todolist.compl == 1%>
+										<option value="0">Open</option>
+										<option value="1" selected="selected">Done</option>
+										<%else%>
+										<option value="0" selected="selected">Open</option>
+										<option value="1">Done</option>
+										<%end%>
+									</select>
+									|
+									<span class="text"><%= f.date_select :duedate %>
+									<%= f.submit %></span>
+								<% end %>
 								</div>
 							</td>
 							<td class="menu">

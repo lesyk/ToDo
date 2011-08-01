@@ -55,6 +55,7 @@ class TodolistsController < ApplicationController
   # PUT /todolists/1.json
   def update
     @todolist = Todolist.find(params[:id])
+    @list = List.find(@todolist.list_id)
 
     respond_to do |format|
       if @todolist.update_attributes(params[:todolist])
