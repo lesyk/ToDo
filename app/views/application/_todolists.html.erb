@@ -14,7 +14,7 @@
 					<td class="text_cursor content"><div class="text_cursor div_due_date">
 							<span class="date empty">
 								<% if todolist.compl == 1%>
-								Done
+								Done <%= todolist.d_completed%>
 								<%else%>
 								<%
 								if !todolist.duedate.blank?

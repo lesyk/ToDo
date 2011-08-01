@@ -56,6 +56,12 @@ class TodolistsController < ApplicationController
   def update
     @todolist = Todolist.find(params[:id])
     @list = List.find(@todolist.list_id)
+    
+    if @todolist.compl != 1
+      if params[:todolist][:compl] == '1'
+        @todolist.update_attributes(:d_completed => Time.now)
+      end
+    end
 
     respond_to do |format|
       if @todolist.update_attributes(params[:todolist])
