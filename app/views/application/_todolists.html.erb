@@ -14,8 +14,8 @@
 					<td class="text_cursor content"><div class="text_cursor div_due_date">
 							<span class="date empty">
 								<% if todolist.compl == 1%>
-								<strike>
-								<%end%>
+								Done
+								<%else%>
 								<%
 								if !todolist.duedate.blank?
 								t = Time.now
@@ -26,7 +26,11 @@
 										<%= distance_of_time_in_words(todolist.duedate, t) %> days late
 									<% end
 								end %>
+								<%end%>
 							</span></div>
+							 <% if todolist.compl == 1%>
+							<strike>
+							<%end%>
 							<span class="text"><div style="word-wrap:break-word; width:430px;"><a href="#" onclick="toggleTodolistDescription(<%= todolist.id %>)">
 								<%= todolist.title %>
 								</a></div>
@@ -36,16 +40,10 @@
 							<%end%>
 						</td>
 						<td class="menu">
-							<% if todolist.compl == 1%>
-							<strike>
-							<%end%>
 							<div class="icon menu">
 								<%= link_to 'Edit', edit_todolist_path(todolist), :remote =>  true, :class => "action" %>
 								<%= link_to 'Destroy', todolist, confirm: 'Are you sure?', method: :delete, :remote =>  true, :class => "action" %>
 							</div>
-							<% if todolist.compl == 1%>
-							</strike>
-							<%end%>
 						</td>
 					</tr>
 					</tbody></table>
