@@ -9,7 +9,15 @@
 //= require_tree .
 
 function toggleCreateNewList() {
-  $("#new_list_form").toggle("slow");
+	$("#new_list_form").toggle("slow");
+	
+	$(".on_the_spot_editing").mouseover(function() {
+        $(this).css('background-color', '#EEF2A0');
+    });
+    $(".on_the_spot_editing").mouseout(function() {
+        $(this).css('background-color', 'inherit');
+    });
+    $('.on_the_spot_editing').each(initializeOnTheSpot);
 }
 
 function toggleCreateNewTodolist() {

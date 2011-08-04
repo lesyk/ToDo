@@ -1,4 +1,18 @@
-$("#todolists").append("<li class='task_item indent_1 priority_1' id='todolist_<%= @todolist.id %>' style=''><table cellpadding='0' cellspacing='0'><tbody><tr><td class='checker'><div class='amicheckbox'><img src='' width='16' height='16' class='cmp_12_checkbox_off amicheckbox_img'></div></td><td class='text_cursor content'><div class='text_cursor div_due_date'><span class='date empty'><%= @todolist.duedate %></span></div><span class='text'><div style='word-wrap:break-word; width:430px;'><a href='#' onclick='toggleTodolistDescription(<%= @todolist.id %>)'><%= @todolist.title %></a></div></span></td><td class='menu'><div class='icon menu'><a href='/todolists/<%= @todolist.id %>/edit' class='action' data-remote='true'>Edit</a><a href='/todolists/<%= @todolist.id %>' class='action' data-confirm='Are you sure?' data-method='delete' data-remote='true' rel='nofollow'>Destroy</a></div></td></tr></tbody></table></li><li class='task_item indent_1 priority_1' id='todolist_desc_<%= @todolist.id %>' style='display: none;'><table cellpadding='0' cellspacing='0'><tbody><tr><td class='text_cursor content'><span class='text'><div style='word-wrap:break-word; width:580px;'>Description:<br/><%= @todolist.note %><br><br>Tags:<br/><span class='text'><%= @todolist.tag_list %></span></div></span></td><td class='menu'><a onclick='hideTodolistDescription(<%= @todolist.id %>)' href='#' class='action'>Hide</a></td></tr></tbody></table></li>");
+var prio = "";
+var prioHelper = "";
+for (var i = -1; i <= 2; i++) {
+	if (i == <%= @todolist.prio %>)
+	{
+		prioHelper = "<option value='"+ i +"' selected='selected'>"+ i +"</option>";
+	}
+	else
+	{
+		prioHelper = "<option value='"+ i +"'>"+ i +"</option>";
+	}
+	
+	prio = prio + prioHelper;
+}
+$("#todolists").append("<li class='task_item indent_1 priority_1' id='todolist_<%= @todolist.id %>'><table cellpadding='0' cellspacing='0'><tbody><tr><td class='text_cursor content'><div class='text_cursor div_due_date'><span class='date empty'><b><%= @todolist.duedate %></b>Priority <%= @todolist.prio %></span></div><span class='text'><div style='word-wrap:break-word; width:430px;'><a href='#' onclick='toggleTodolistDescription(<%= @todolist.id %>)'><%= @todolist.title %></a></div></span></td><td class='menu'><div class='icon menu'><a href='/todolists/<%= @todolist.id %>/edit' class='action' data-remote='true'>Edit</a><a href='/todolists/<%= @todolist.id %>' class='action' data-confirm='Are you sure?' data-method='delete' data-remote='true' rel='nofollow'>Destroy</a></div></td></tr></tbody></table></li><li class='task_item indent_1 priority_1' id='todolist_desc_<%= @todolist.id %>' style='display: none; '><table cellpadding='0' cellspacing='0'><tbody><tr><td class='text_cursor content'><span class='text'><div style='word-wrap:break-word; width:580px;'>Description: <br/><%= @todolist.note %><br/><br/>Tags:<br><span class='text'><%= @todolist.tag_list %></span><br><form accept-charset='UTF-8' action='/todolists/<%= @todolist.id %>' class='edit_todolist' data-remote='true' id='edit_todolist_<%= @todolist.id %>' method='post'><div style='margin:0;padding:0;display:inline'><input name='utf8' type='hidden' value='✓'><input name='_method' type='hidden' value='put'></div>Status <select id='todolist_compl' name='todolist[compl]'><option value='0' selected='selected'>Open</option><option value='1'>Done</option></select> | Prio <select id='todolist_prio' name='todolist[prio]'>"+ prio +"</select><input name='commit' type='submit' value='Update Todolist'></span></form></div></span></td><td class='menu'><a onclick='toggleTodolistDescription(<%= @todolist.id %>)' href='#' class='action'>Hide</a></td></tr></tbody></table></li>");
 $("#div_counter_<%= @todolist.list_id %>").html("<%= pluralize(@list.todolists.count, '') %>");
 toggleCreateNewTodolist();
 $("#todolist_<%= @todolist.id %>").fadein(3000);
