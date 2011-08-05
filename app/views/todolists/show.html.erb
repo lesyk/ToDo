@@ -1,29 +1,74 @@
+<div id="show">
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Title:</b>
+  <small>Title:</small>
   <%= @todolist.title %>
 </p>
 
 <p>
-  <b>Note:</b>
+  <small>Note:</small>
   <%= @todolist.note %>
 </p>
 
 <p>
-  <b>Prio:</b>
+  <small>Prio:</small>
   <%= @todolist.prio %>
 </p>
 
 <p>
-  <b>Duedate:</b>
+  <small>Duedate:</small>
   <%= @todolist.duedate %>
 </p>
 
-<p><strong>This todo was tagged with</strong>: <% for tag in @todolist.tags %> 
+<p><small>This todo was tagged with: </small>
+<% for tag in @todolist.tags %> 
 <%= tag.name %>
 <%end%>
 </p>
 
-<%= link_to 'Edit', edit_todolist_path(@todolist) %> |
-<%= link_to 'Back', todolists_path %>
+<a href="#" onclick = "toggleEditForm();">Edit</a> | <%= link_to 'Destroy', @todolist, confirm: 'Are you sure?', method: :delete, :remote =>  true %>
+</div>
+
+<div id="edit"  style="display: none;">
+<%= form_for(@todolist, :remote => true, :class => 'form') do |f| %>
+  <% if @todolist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@todolist.errors.count, "error") %> prohibited this todolist from being saved:</h2>
+
+      <ul>
+      <% @todolist.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <small><%= f.label :title %></small><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <small><%= f.label :note %></small><br />
+    <%= f.text_field :note %>
+  </div>
+  <div class="field">
+    <small><%= f.label :duedate %></small><br />
+    <%= f.date_select :duedate %>
+  </div>
+  <br />
+  <div class="field">
+	<small>Status: </small>
+	<%=select_tag "todolist[compl]", options_for_select([["Open", "0"], ["Done", "1"]], :compl)%> | <small>Prio: </small><%=select_tag "todolist[prio]", options_for_select([["-1", "-1"], ["0", "0"], ["1", "1"], ["2", "2"]], :prio)%>
+	</div>
+<br />
+  <div class="field">
+	<small><%= f.label 'Tag List (Delimiter = ,)' %></small><br />
+	<%= f.text_field :tag_list %>
+  </div>
+<br />
+  <div class="actions">
+    <%= f.submit %> | <a href="#" onclick = "toggleEditForm();">Cancel</a>
+  </div>
+<% end %>
+</div>

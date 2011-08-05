@@ -14,10 +14,11 @@ class TodolistsController < ApplicationController
   # GET /todolists/1.json
   def show
     @todolist = Todolist.find(params[:id])
+    
+    edit
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @todolist }
+      format.js
     end
   end
 
@@ -38,17 +39,17 @@ class TodolistsController < ApplicationController
   end
   
   def create
-     if params[:commit]
+     #if params[:commit]
        @list = List.find(params[:list_id])
         @todolist = @list.todolists.create(params[:todolist])
 
 
         respond_to do |format|
           format.js
-        end
-      else
-        render :nothing => true
       end
+      #else
+       # render :nothing => true
+      #end
    end
 
   # PUT /todolists/1

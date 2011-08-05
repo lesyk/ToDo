@@ -1,3 +1,4 @@
-$('#todolist_<%= @todolist.id %>').fadeOut();
-$('#todolist_desc_<%= @todolist.id %>').fadeOut();
-$("#div_counter_<%= @todolist.list_id %>").html("<%= pluralize(@list.todolists.count, '') %>");
+$('[class^=calendar current]').attr("class", "calendar current").fadeOut();
+$('.preview-pane .preview').animate({left: "-375px"}, 300);
+$('.preview-pane .preview').html('');
+$('.list-view li').removeClass('current');

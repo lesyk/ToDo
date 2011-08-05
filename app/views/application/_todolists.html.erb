@@ -1,139 +1,47 @@
-<div id="allLists">
-<div class="list_editor">
-	<h2 class="project_header">
-		<div class="view_holder">
-			<img src="" width="16" height="16" class="cmp_print_off"><img src="" width="16" height="16" class="cmp_email_off"><img src="" width="16" height="16" class="cmp_gear_off icon">
-		</div>
-		
-		<span><div style="word-wrap:break-word; width:530px;" id="nameoflists"><%= @list.name %></div></span></h2>
-		<ul class="items" id="todolists">
-			<% @list.todolists.each do |todolist| %>
-			<li class="task_item indent_1 priority_1" id="todolist_<%= todolist.id %>" >
-				<table cellpadding="0" cellspacing="0">
-				<tbody><tr>
-					<td class="text_cursor content"><div class="text_cursor div_due_date">
-							<span class="date empty">
-								<% if todolist.compl == 1%>
-								
-								<b>Done <%= todolist.d_completed%></b>
-								Priority <%= todolist.prio%>
-								<%else%>
-								<%
-								if !todolist.duedate.blank?
-								t = Time.now
-								t.strftime("%Y/%m/%d")
-									if t < todolist.duedate %>
-										<%= todolist.duedate %>
-									<% else %>
-										<b><%= distance_of_time_in_words(todolist.duedate, t) %> days late</b>
-										Priority <%= todolist.prio%>
-									<% end
-								end %>
-								<%end%>
-							</span></div>
-							 <% if todolist.compl == 1%>
-							<strike>
-							<%end%>
-							<span class="text"><div style="word-wrap:break-word; width:430px;"><a href="#" onclick="toggleTodolistDescription(<%= todolist.id %>)">
-								<%= todolist.title %>
-								</a></div>
-							</span>
-							<% if todolist.compl == 1%>
-							</strike>
-							<%end%>
-						</td>
-						<td class="menu">
-							<div class="icon menu">
-								<%= link_to 'Edit', edit_todolist_path(todolist), :remote =>  true, :class => "action" %>
-								<%= link_to 'Destroy', todolist, confirm: 'Are you sure?', method: :delete, :remote =>  true, :class => "action" %>
-							</div>
-						</td>
-					</tr>
-					</tbody></table>
-				</li>
-				
-				<li class="task_item indent_1 priority_1" id="todolist_desc_<%= todolist.id %>" style="display: none;">
-					<table cellpadding="0" cellspacing="0">
-					<tbody><tr>
-						<td class="text_cursor content">
-								<span class="text">
-								<div style="word-wrap:break-word; width:580px;">
-								Description: <br/>	
-								<%= todolist.note %>
-								<br/>
-								<br/>Tags:<br/>
-								<span class="text"><%= todolist.tag_list %></span>
-								<br/>
-								<%= form_for(todolist, :remote => true) do |f| %>
-									Status 
-									<%=select_tag "todolist[compl]", options_for_select([["Open", "0"], ["Done", "1"]], todolist.compl)%>
-									|
-									Prio 
-									<%=select_tag "todolist[prio]", options_for_select([["-1", "-1"], ["0", "0"], ["1", "1"], ["2", "2"]], todolist.prio)%>
-									|
-									<span class="text"><%= f.date_select :duedate %>
-									<%= f.submit %></span>
-								<% end %>
-								</div>
-							</td>
-							<td class="menu">
-								<a onclick="toggleTodolistDescription(<%= todolist.id %>)" href="#" class="action">Hide</a>
-							</td>
-						</tr>
-						</tbody>
-					</table>
-					</li>
-				
-				<% end %>
-			</ul>
-		</div>
-		
-		<ul class="items" style="display: none;" id="new_todolist_form">
-			<li class="manager indent_1">
-				<%= form_for([@list, @list.todolists.build]) do |f| %>
-					<table width="100%"><tbody>
-						<tr><td colspan="2" class="form_content">
-							Enter a Task title    
-							<%= f.text_field :title, :class => "text_box auto_exapnd_ta", :autocomplete => "off", :style => "height: 19px;"%></td>
-						</tr>
-						<tr><td colspan="2" class="form_content">
-							What needs to be done?
-							<%= f.text_area :note, :class => "text_box auto_exapnd_ta", :rows => "5", :autocomplete => "off"%></td>
-						</tr>
-						<tr><td align ="right" colspan="2" class="form_content">
-							Needs to be done before... optional<br/>
-							    <%= f.date_select :duedate, :default => Time.now, :include_blank => true, :start_year => Time.now.year, :class => "text_box auto_exapnd_ta", :autocomplete => "off"%></td>
-						</tr>
-						<tr><td align ="right" colspan="2" class="form_content">
-							Prio 
-							<%=select_tag "todolist[prio]", options_for_select([["-1", "-1"], ["0", "0"], ["1", "1"], ["2", "2"]], "0")%>
-						</tr>
-						<tr><td colspan="2" class="form_content">
-								Tag List (Delimiter = ,)<br />
-							    <%= f.text_field :tag_list, :class => "text_box auto_exapnd_ta", :autocomplete => "off", :style => "height: 19px;"%></td>
-						</tr>
-						<tr>
-							<td>
-								<%= f.submit %>
-								<a href="#" onclick="toggleCreateNewTodolist()" class="cancel" href="" tabindex="4">I'm done adding tasks</a></td>
-						</tr></tbody>
-					</table>
-					<% end %>
-			</li>
-		</ul>
-
-		<div class="controller actions" id="pe_items_controller">
-			<a onclick="toggleCreateNewTodolist()" href="#" class="action">Add task</a>
-			<a href="#" class=" action">Reorder</a>
-		</div>
-</div>		
-
-		<div class="list_editor history">
-			<div class="history_desc">
-				<ul class="items history" id="project_history"></ul>
-			</div>
-		</div>
-		<div class="controller actions his_ctrl">
-			<a href="#" class="disabled" style="float: right; margin-right: 0px; ">Delete completed</a>
-			<a href="#" class="action dimmed">Get completed tasks (<span>0</span>)</a>
-		</div>
+<div class="main-content grid_4 alpha"  id="todolists">
+    <header>
+        <ul class="action-buttons clearfix fr">
+            <li><a href="calendar.html" class="button button-gray no-text" title="View the Task Calendar"><span class="calendar"></span></a></li>
+            <li><a href="documentation/index.html" class="button button-gray no-text help" rel="#overlay"><span class="help"></span></a></li>
+        </ul>
+        <div class="view-switcher">
+            <h2>All Tasks <a href="#">&darr;</a></h2>
+            <ul>
+                <li><a href="#">All Tasks</a></li>
+                <li><a href="#">All Tasks Today</a></li>
+                <li><a href="#">All Tasks Tomorrow</a></li>
+                <li class="separator"></li>
+                <li>Recently done...</li>
+                <li class="separator"></li>
+                <li><a href="#">Yesterday</a></li>
+                <li><a href="#">Last Week</a></li>
+            </ul>
+        </div>
+    </header>
+    <section>
+        <ul class="listing list-view">
+            <li class="tick">
+                <a class="more" href="taskdetails.html">&raquo;</a>
+                <span class="timestamp">Dec 28, 2010</span>
+                <a href="#">Today</a>
+                <p>Cras egestas vestibulum nisl, nec eleifend nunc pulvinar non.</p>
+            </li>
+		<% @list.todolists.each do |todolist| %>
+            <li class="calendar">
+                <a class="more" href="/todolists/<%= todolist.id %>" >&raquo;</a>
+                <span class="timestamp"><%= todolist.duedate %></span>
+                <a href="#">Tomorrow</a>
+                <p><%= todolist.title %></p>
+            </li>
+		<% end %>
+        </ul>
+        <ul class="pagination clearfix">
+            <li><a href="#" class="button-blue">&laquo;</a></li>
+            <li><a href="#" class="current button-blue">1</a></li>
+            <li><a href="#" class="button-blue">2</a></li>
+            <li><a href="#" class="button-blue">3</a></li>
+            <li><a href="#" class="button-blue">&raquo;</a></li>
+        </ul>
+    </section>
+</div>
+	
