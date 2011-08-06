@@ -1,5 +1,5 @@
 <% @lists.each do |list| %>
-<li><a class="nav-icon" href="/lists/<%= list.id %>"><span><%= pluralize(list.todolists.count, "") %></span><%= list.name %></a>
+<li><a class="nav-icon" href="/lists/<%= list.id %>" data-remote="true"><span><%= pluralize(list.todolists.count, "") %></span><%= list.name %></a>
 <%= link_to 'Destroy', list, confirm: 'Are you sure?', method: :delete, :remote =>  true %></li>
 <%end%>
 

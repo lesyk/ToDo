@@ -27,6 +27,9 @@
                 <p>Cras egestas vestibulum nisl, nec eleifend nunc pulvinar non.</p>
             </li>
 		<% @list.todolists.each do |todolist| %>
+		<%if !todolist.id %>
+			<%break%>
+		<% end %>
             <li class="calendar">
                 <a class="more" href="/todolists/<%= todolist.id %>" >&raquo;</a>
                 <span class="timestamp"><%= todolist.duedate %></span>
