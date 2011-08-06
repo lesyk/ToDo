@@ -25,3 +25,5 @@ $('.preview-pane .preview .close').live('click', function(){
     return false;
 });
 // preview pane setup end
+
+$("#counteOfTasks_<%= @todolist.list_id %>").html("<%= pluralize(@list.todolists.count, '') %>");
