@@ -44,7 +44,25 @@
             <li><a href="#" class="button-blue">2</a></li>
             <li><a href="#" class="button-blue">3</a></li>
             <li><a href="#" class="button-blue">&raquo;</a></li>
+			<div style="float: right;" class="button button-blue" onclick = "toggleCreateTodolistForm();">Create Todolist</div>
         </ul>
+			<div id = "create_todolist" class='form grid_3' style="display: none;">
+			<%= form_for([@list, @list.todolists.build]) do |f| %>
+			<fieldset>
+			<legend>Create todolist</legend>
+			Enter a Task title<br/>
+						<%= f.text_field :title, :class => "text_box auto_exapnd_ta", :autocomplete => "off", :style => "height: 19px;"%><br/> 
+			What needs to be done?<br/>
+						<%= f.text_area :note, :class => "text_box auto_exapnd_ta", :rows => "5", :autocomplete => "off"%><br/>
+			Needs to be done before... optional<br/>
+						    <%= f.date_select :duedate, :default => Time.now, :include_blank => true, :start_year => Time.now.year, :class => "text_box auto_exapnd_ta", :autocomplete => "off"%><br/>
+			Prio <%=select_tag "todolist[prio]", options_for_select([["-1", "-1"], ["0", "0"], ["1", "1"], ["2", "2"]], "0")%><br/>
+			Tag List (Delimiter = ,)<br />
+						    <%= f.text_field :tag_list, :class => "text_box auto_exapnd_ta", :autocomplete => "off", :style => "height: 19px;"%><br/>
+			<%= f.submit :class=>"button button-orange" %>
+			<div onclick = "toggleCreateTodolistForm();" class="button button-gray">Cancel</div>
+			</fieldset>
+			<% end %>
+		</div>
     </section>
 </div>
-	

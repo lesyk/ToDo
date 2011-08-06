@@ -25,7 +25,8 @@ class TodolistsController < ApplicationController
   # GET /todolists/new
   # GET /todolists/new.json
   def new
-    @todolist = Todolist.new
+    @list = List.find(params[:id])
+    @todolist = @list.todolists.new
 
     respond_to do |format|
       format.html # new.html.erb

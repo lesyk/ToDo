@@ -2,36 +2,41 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <small>Title:</small>
-  <%= @todolist.title %>
+  <h3>Title: <%= @todolist.title %></h3>
 </p>
 
 <p>
-  <small>Note:</small>
-  <%= @todolist.note %>
+  	<% if @todolist.note != "" %>
+  	<h4>Note:
+  	<%= @todolist.note %>
+	<%end%>
+	</h4>
 </p>
 
 <p>
-  <small>Prio:</small>
-  <%= @todolist.prio %>
+  <h4>Prio: <%= @todolist.prio %></h4>
 </p>
 
 <p>
-  <small>Duedate:</small>
-  <%= @todolist.duedate %>
+	<h4>Duedate: <strong> <%= @todolist.duedate %></strong></h4>
 </p>
 
-<p><small>This todo was tagged with: </small>
-<% for tag in @todolist.tags %> 
-<%= tag.name %>
-<%end%>
-</p>
+  	<% if @todolist.tags.count != 0 %>
+	<p><h4>This todo was tagged with:</h4>
+	<p><mark>
+		<% for tag in @todolist.tags %> 
+		<%= tag.name %>s
+		<%end%>
+	</mark>
+	<%end%>
 
-<a href="#" onclick = "toggleEditForm();">Edit</a> | <%= link_to 'Destroy', @todolist, confirm: 'Are you sure?', method: :delete, :remote =>  true %>
+<div onclick = "toggleEditForm();" class="button button-green">Edit</div> | <%= link_to 'Destroy', @todolist, confirm: 'Are you sure?', method: :delete, :remote =>  true, :class=>'button button-red' %>
 </div>
 
 <div id="edit"  style="display: none;">
-<%= form_for(@todolist, :remote => true, :class => 'form') do |f| %>
+<%= form_for(@todolist, :remote => true, :class => 'form grid_3') do |f| %>
+<fieldset>
+<legend>Update todolist</legend>
   <% if @todolist.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@todolist.errors.count, "error") %> prohibited this todolist from being saved:</h2>
@@ -68,7 +73,8 @@
   </div>
 <br />
   <div class="actions">
-    <%= f.submit %> | <a href="#" onclick = "toggleEditForm();">Cancel</a>
+    <%= f.submit :class=>"button button-orange" %> | <div onclick = "toggleEditForm();" class="button button-gray">Cancel</div>
   </div>
+</fieldset>
 <% end %>
 </div>

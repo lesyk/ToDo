@@ -120,14 +120,6 @@ $(document).ready(function() {
     });
     // preview pane setup end
 
-	// preview pane setup
-    /*$('.clearfix > li').click(function(){
-        var url = $(this).find('.nav-icon').attr('href');
-       	$('#todolists').html('<img src="/assets/ajax-loader.gif" />').load(url);
-        return false;
-    });*/
-    // preview pane setup end
-
     // floating menu and preview pane
     if ($('#wrapper > header').length>0) { menuYloc = parseInt($('#wrapper > header').css("top").substring(0,$('#wrapper > header').css("top").indexOf("px")), 10); }
     if ($('.preview-pane .preview').length>0) { previewYloc = parseInt($('.preview-pane .preview').css("top").substring(0,$('.preview').css("top").indexOf("px")), 10); }
@@ -200,4 +192,11 @@ $(document).ready(function() {
 function toggleEditForm(){
 	$("#show").toggle("slow");
 	$("#edit").toggle("slow");
+}
+
+function toggleCreateTodolistForm(){
+	$("#create_todolist").toggle("slow");
+	$("[class^=listing list-view]").toggle("slow");
+	$("[class^=pagination clearfix]").toggle("slow");
+	
 }
