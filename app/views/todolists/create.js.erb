@@ -1,6 +1,6 @@
-$("[class^=popupballoon top]").fadeOut(500);
-
-$("[class^=listing list-view]").append("<li class='calendar'><a class='more' href='/todolists/<%= @todolist.id %>'>»</a><span class='timestamp'></span><a href='#'>Tomorrow</a><p><%= @todolist.title %></p></li>");
+//$("[class^=popupballoon top]").fadeOut(500);
+toggleCreateTodolistForm();
+$("[class^=listing list-view]").append("<li class='calendar'><a class='more' href='/todolists/<%= @todolist.id %>'>»</a><span class='timestamp'><%= @todolist.duedate%></span><a href='#'>Tomorrow</a><p><%= @todolist.title %></p></li>");
 
 // preview pane setup
 $('.list-view > li').click(function(){

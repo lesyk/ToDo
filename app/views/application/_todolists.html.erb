@@ -47,7 +47,7 @@
 			<div style="float: right;" class="button button-blue" onclick = "toggleCreateTodolistForm();">Create Todolist</div>
         </ul>
 			<div id = "create_todolist" class='form grid_3' style="display: none;">
-			<%= form_for([@list, @list.todolists.build]) do |f| %>
+			<%= form_for([@list, @list.todolists.build], :remote=>true) do |f| %>
 			<fieldset>
 			<legend>Create todolist</legend>
 			Enter a Task title<br/>
