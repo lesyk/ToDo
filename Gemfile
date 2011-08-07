@@ -9,8 +9,6 @@ gem 'mysql2'
 
 gem 'acts-as-taggable-on'
 
-gem 'on_the_spot'
-
 gem 'therubyracer'
 
 # Asset template engines

@@ -200,3 +200,8 @@ function toggleCreateTodolistForm(){
 	$("[class^=pagination clearfix]").toggle("slow");
 	
 }
+
+function toggleTasklistEditForm(id){
+	$("#list_" + id).toggle("slow");
+	$("#edit_list_" + id).toggle("slow");
+}

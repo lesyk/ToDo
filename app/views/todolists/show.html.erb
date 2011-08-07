@@ -33,7 +33,7 @@
 <div onclick = "toggleEditForm();" class="button button-green">Edit</div> | <%= link_to 'Destroy', @todolist, confirm: 'Are you sure?', method: :delete, :remote =>  true, :class=>'button button-red' %>
 </div>
 
-<div id="edit"  style="display: none;">
+<div id="edit" style="display: none;">
 <%= form_for(@todolist, :remote => true, :class => 'form grid_3') do |f| %>
 <fieldset>
 <legend>Update todolist</legend>

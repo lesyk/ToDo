@@ -1,0 +1,7 @@
+$("#edit_list_<%= @list.id %>").hide("slow");
+$("#list_<%= @list.id %>").show("slow");
+$("#list_<%= @list.id %>").remove();
+$("#edit_list_<%= @list.id %>").before("<li id='list_<%= @list.id %>'><a class='nav-icon' href='/lists/<%= @list.id %>' data-remote='true'><span id='counteOfTasks_<%= @list.id %>'>0</span><%= @list.name %></a><a href='#' onclick='toggleTasklistEditForm(<%= @list.id %>)'>Edit</a><a href='/lists/<%= @list.id %>' data-confirm='Are you sure?' data-method='delete' data-remote='true' rel='nofollow'>Destroy</a></li>");
+$("#edit_list_<%= @list.id %>").remove();
+$("#list_<%= @list.id %>").after("<li id='edit_list_<%= @list.id %>' style='display: block;'><form accept-charset='UTF-8' action='/lists/<%= @list.id %>' class='edit_list' data-remote='true' id='edit_list_<%= @list.id %>' method='post'><div style='margin:0;padding:0;display:inline'><input name='utf8' type='hidden' value='✓'><input name='_method' type='hidden' value='put'></div><input id='list_name' name='list[name]' size='30' size='13px' style='margin-top:2px' type='text' value='<%= @list.name %>'> <input name='commit' type='submit' value='Update List'> | <a href='#' onclick='toggleTasklistEditForm(<%= @list.id %>)'>Cancel</a></form></li>");
+$("#edit_list_<%= @list.id %>").hide("slow");

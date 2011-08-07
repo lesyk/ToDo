@@ -1,5 +1,13 @@
 <% @lists.each do |list| %>
-<li><a class="nav-icon" href="/lists/<%= list.id %>" data-remote="true"><span><%= pluralize(list.todolists.count, "") %></span><%= list.name %></a>
+<li id="list_<%= list.id %>"><a class="nav-icon" href="/lists/<%= list.id %>" data-remote="true"><span id="counteOfTasks_<%=list.id%>"><%= pluralize(list.todolists.count, "") %></span><%= list.name %></a>
+<a href="#" onclick="toggleTasklistEditForm(<%= list.id %>)">Edit</a>
 <%= link_to 'Destroy', list, confirm: 'Are you sure?', method: :delete, :remote =>  true %></li>
-<%end%>
 
+<li id="edit_list_<%= list.id %>" style="display: none;">
+	<%= form_for(list, :remote => true) do |f| %>
+    <%= f.text_field :name, :size=>"13px", :style=>"margin-top:2px" %>
+    <%= f.submit %> | <a href="#" onclick="toggleTasklistEditForm(<%= list.id %>)">Cancel</a>
+	<% end %>
+</li>
+
+<%end%>

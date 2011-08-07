@@ -1,6 +1,4 @@
 class ListsController < ApplicationController
-  can_edit_on_the_spot
-
   # GET /lists
   # GET /lists.json
   def index
@@ -69,6 +67,7 @@ class ListsController < ApplicationController
       if @list.update_attributes(params[:list])
         format.html { redirect_to @list, notice: 'List was successfully updated.' }
         format.json { head :ok }
+        format.js
       else
         format.html { render action: "edit" }
         format.json { render json: @list.errors, status: :unprocessable_entity }

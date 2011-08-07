@@ -3,7 +3,6 @@
 <head>
   <%#= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "on_the_spot" %>
 
   <%#= csrf_meta_tags %>
 
@@ -22,7 +21,6 @@
 
 <%= javascript_include_tag "jquery.tools.min" %>
 <%= javascript_include_tag "global" %>
-
 
 <!--[if lt IE 9]>
 <script type="text/javascript" src="js/html5.js"></script>
@@ -55,19 +53,16 @@
                             </div>
                         </li>
                         <li class="action">
-                            <a href="#" class="has-popupballoon button button-blue"><span class="add"></span>New Task</a>
+                            <a href="#" class="has-popupballoon button button-blue"><span class="add"></span>New Task List</a>
                             <div class="popupballoon top">
-								<%= form_for([@list, @list.todolists.build], :remote=>true) do |f| %>
-                                <h3>Add new task</h3>
-                                <input type="text" id="todolist_title" name="todolist[title]"/><br /><br />
-                                When it's due?<br />
-                                <input type="date" id="todolist_duedate" name="todolist[duedate]"/><br />
-                                What category?<br />
-                                <select><option>None</option></select>
+								<%= form_for(@listCreateNew, :remote => true) do |f| %>
+                                <h3>Add new task list</h3>
+								Name:
+								<%= f.text_field :name, :style=>"background: #FFF;" %><br/>
                                 <hr />
                                 <button class="button button-orange">Add task</button>
 								<div class="button button-gray close">Cancel</div>
-								<%end%>
+								<% end %>
                             </div>
                         </li>
                         <li><a href="dashboard.html">Dashboard</a></li>
@@ -101,7 +96,8 @@
                             <li><a class="nav-icon icon-time" href="activity.html">Latest Activity</a></li>
                             <li><a class="nav-icon icon-book" href="contacts.html"><span>2</span>Contacts</a></li>
                             <li class="active"><a class="nav-icon icon-tick" href="#"><span>1</span>Tasks</a></li>
-							 <%= render "lists" %>
+							<%= render "lists" %>
+							<li id="listnew" style="display: none;"></li>
                             <li><a class="nav-icon icon-note" href="notes.html">Notes</a></li>
                         </ul>
                     </nav>
