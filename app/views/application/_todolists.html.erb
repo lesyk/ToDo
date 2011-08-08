@@ -20,21 +20,32 @@
     </header>
     <section>
         <ul class="listing list-view">
-            <li class="tick">
-                <a class="more" href="taskdetails.html">&raquo;</a>
-                <span class="timestamp">Dec 28, 2010</span>
-                <a href="#">Today</a>
-                <p>Cras egestas vestibulum nisl, nec eleifend nunc pulvinar non.</p>
-            </li>
 		<% @list.todolists.each do |todolist| %>
 		<%if !todolist.id %>
 			<%break%>
 		<% end %>
-            <li class="calendar">
+            <% if todolist.compl == 1%>
+            <li class="tick">
                 <a class="more" href="/todolists/<%= todolist.id %>" >&raquo;</a>
-                <span class="timestamp"><%= todolist.duedate %></span>
-                <a href="#">Tomorrow</a>
+				<span class="timestamp"><strike><%= todolist.duedate %></strike></span>
+                <a href="#">Done</a>
+                <p><strike><%= todolist.title %></strike></p>
+				<%else%>
+			<li class="calendar">
+                <a class="more" href="/todolists/<%= todolist.id %>" >&raquo;</a>
+				<span class="timestamp"><%= todolist.duedate %></span>
+				<div style="text-transform:capitalize;">
+				<% if !todolist.duedate.blank?
+					t = Time.now
+					t.strftime("%Y/%m/%d")
+						if t < todolist.duedate %>
+							<strong><%=time_ago_in_words(todolist.duedate, t) %> left</strong>
+						<% else %>
+							<strong><%= distance_of_time_in_words(todolist.duedate, t) %> late</strong>
+						<%end%><%end%>
+						</div>
                 <p><%= todolist.title %></p>
+				<%end%>
             </li>
 		<% end %>
         </ul>
