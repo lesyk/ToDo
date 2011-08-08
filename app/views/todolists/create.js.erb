@@ -1,6 +1,6 @@
 //$("[class^=popupballoon top]").fadeOut(500);
 hideCreateTodolistForm();
-$("[class^=listing list-view]").append("<li class='calendar'><a class='more' href='/todolists/<%= @todolist.id %>'>»</a><span class='timestamp'><%= @todolist.duedate%></span><a href='#'>Tomorrow</a><p><%= @todolist.title %></p></li>");
+$("#todolists").html("<%= escape_javascript(render("todolists")) %>");
 
 previewPaneSetup();
 
