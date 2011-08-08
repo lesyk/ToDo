@@ -8,26 +8,6 @@
 //= require jquery_ujs
 //= require_tree .
 
-function toggleCreateNewList() {
-	$("#new_list_form").toggle("slow");
-	
-	$(".on_the_spot_editing").mouseover(function() {
-        $(this).css('background-color', '#EEF2A0');
-    });
-    $(".on_the_spot_editing").mouseout(function() {
-        $(this).css('background-color', 'inherit');
-    });
-    $('.on_the_spot_editing').each(initializeOnTheSpot);
-}
-
-function toggleCreateNewTodolist() {
-  $("#new_todolist_form").toggle("slow");
-}
-
-function toggleTodolistDescription(id) {
-  $("#todolist_desc_" + id).toggle("slow");
-}
-
 jQuery.ajaxSetup({ 
   'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
 })
@@ -49,35 +29,4 @@ $(document).ready(function() {
   		$.rails.handleRemote($("#new_todolist"));
       	e.preventDefault();
    	});
-})
-
-$(function() {
-  $(".todolistLoadDiv a").live("click", function(event) {
-    $.getScript(this.href);
-
-	$("#nameoflists").html("Page is loading...");
-
-
-	//create empty handlers for new form
-	$("#new_todolist").live('submit', function(e){
-    	$.rails.handleRemote($("#new_todolist"));
-        e.preventDefault();
-     });
-	
-	return false;
-  });
-});
-
-$(function() {
-  $(".list_editor a").live("click", function(event) {
-    $.getScript(this.href);
-
-	//create empty handlers for new form
-	$("#new_todolist").live('submit', function(e){
-    	$.rails.handleRemote($("#new_todolist"));
-        e.preventDefault();
-     });
-	
-	return false;
-  });
 });

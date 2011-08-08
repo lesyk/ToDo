@@ -1,29 +1,7 @@
 //$("[class^=popupballoon top]").fadeOut(500);
-toggleCreateTodolistForm();
+hideCreateTodolistForm();
 $("[class^=listing list-view]").append("<li class='calendar'><a class='more' href='/todolists/<%= @todolist.id %>'>»</a><span class='timestamp'><%= @todolist.duedate%></span><a href='#'>Tomorrow</a><p><%= @todolist.title %></p></li>");
 
-// preview pane setup
-$('.list-view > li').click(function(){
-    var url = $(this).find('.more').attr('href');
-    if (!$(this).hasClass('current')) {
-        $('.preview-pane .preview').animate({left: "-375px"}, 300, function(){
-            $(this).animate({left: "-22px"}, 500).html('<img src="/assets/ajax-loader.gif" />').load(url);
-        });
-    } else {
-        $('.preview-pane .preview').animate({left: "-375px"}, 300);
-    	$('.preview-pane .preview').html('');
-    }
-    $(this).toggleClass('current').siblings().removeClass('current');
-    return false;
-});
-
-$('.list-view > li a:not(.more)').click(function(e){ e.stopPropagation(); });
-
-$('.preview-pane .preview .close').live('click', function(){
-    $('.preview-pane .preview').animate({left: "-375px"}, 300);
-    $('.list-view li').removeClass('current');
-    return false;
-});
-// preview pane setup end
+previewPaneSetup();
 
 $("#counteOfTasks_<%= @todolist.list_id %>").html("<%= pluralize(@list.todolists.count, '') %>");

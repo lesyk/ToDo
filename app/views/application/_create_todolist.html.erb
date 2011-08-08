@@ -1,0 +1,32 @@
+<%= form_for([@list, @list.todolists.build], :remote=>true, :class => 'form grid_3') do |f| %>
+<fieldset>
+<legend>Create todolist</legend>
+
+  <div class="field">
+    <small><%= f.label :title %></small><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <small><%= f.label :note %></small><br />
+    <%= f.text_field :note %>
+  </div>
+  <div class="field">
+    <small><%= f.label :duedate %></small><br />
+    <%= f.date_select :duedate %>
+  </div>
+  <br />
+  <div class="field">
+	<small>Status: </small>
+	<%=select_tag "todolist[compl]", options_for_select([["Open", "0"], ["Done", "1"]], :compl)%> | <small>Prio: </small><%=select_tag "todolist[prio]", options_for_select([["-1", "-1"], ["0", "0"], ["1", "1"], ["2", "2"]], :prio)%>
+	</div>
+<br />
+  <div class="field">
+	<small><%= f.label 'Tag List (Delimiter = ,)' %></small><br />
+	<%= f.text_field :tag_list %>
+  </div>
+<br />
+  <div class="actions">
+    <%= f.submit :class=>"button button-orange" %> | <div onclick = "hideCreateTodolistForm();" class="button button-gray">Cancel</div>
+  </div>
+</fieldset>
+<% end %>

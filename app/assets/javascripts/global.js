@@ -97,27 +97,7 @@ $(document).ready(function() {
     });
 
     // preview pane setup
-    $('.list-view > li').click(function(){
-        var url = $(this).find('.more').attr('href');
-        if (!$(this).hasClass('current')) {
-            $('.preview-pane .preview').animate({left: "-375px"}, 300, function(){
-                $(this).animate({left: "-22px"}, 500).html('<img src="/assets/ajax-loader.gif" />').load(url);
-            });
-        } else {
-            $('.preview-pane .preview').animate({left: "-375px"}, 300);
-        	$('.preview-pane .preview').html('');
-        }
-        $(this).toggleClass('current').siblings().removeClass('current');
-        return false;
-    });
-    
-    $('.list-view > li a:not(.more)').click(function(e){ e.stopPropagation(); });
-
-    $('.preview-pane .preview .close').live('click', function(){
-        $('.preview-pane .preview').animate({left: "-375px"}, 300);
-        $('.list-view li').removeClass('current');
-        return false;
-    });
+    previewPaneSetup();
     // preview pane setup end
 
     // floating menu and preview pane
@@ -189,16 +169,53 @@ $(document).ready(function() {
     });
 });
 
+function previewPaneSetup(){
+	$('.list-view > li').click(function(){
+		hideCreateTodolistForm();
+        var url = $(this).find('.more').attr('href');
+        if (!$(this).hasClass('current')) {
+            $('.preview-pane .preview').animate({left: "-375px"}, 300, function(){
+                $(this).animate({left: "-22px"}, 500);
+				$('.preview-pane #showPreview').html('<img src="/assets/ajax-loader.gif" />').load(url);
+            });
+        } else {
+            $('.preview-pane .preview').animate({left: "-375px"}, 300);
+        	$('.preview-pane #showPreview').html('');
+        }
+        $(this).toggleClass('current').siblings().removeClass('current');
+        return false;
+    });
+    
+    $('.list-view > li a:not(.more)').click(function(e){ e.stopPropagation(); });
+
+    $('.preview-pane .preview .close').live('click', function(){
+        $('.preview-pane .preview').animate({left: "-375px"}, 300);
+        $('.list-view li').removeClass('current');
+        return false;
+    });
+}
+
 function toggleEditForm(){
 	$("#show").toggle("slow");
 	$("#edit").toggle("slow");
 }
 
-function toggleCreateTodolistForm(){
-	$("#create_todolist").toggle("slow");
-	$("[class^=listing list-view]").toggle("slow");
-	$("[class^=pagination clearfix]").toggle("slow");
+function showCreateTodolistForm(){
+	//$("#create_todolist").toggle("slow");
+	//$("[class^=listing list-view]").toggle("slow");
+	//$("[class^=pagination clearfix]").toggle("slow");
+	$("#showPreview").hide("fast");
+    $('.preview-pane .preview').animate({left: "-375px"}, 300, function(){
+    $(this).animate({left: "-22px"}, 500);
+    });
+    $('.list-view > li').toggleClass('current').siblings().removeClass('current');
+	$("#create_todolist").show("slow");
 	
+}
+function hideCreateTodolistForm(){
+    $('.preview-pane .preview').animate({left: "-375px"}, 300);
+	$("#create_todolist").hide("slow");
+	$("#showPreview").show("fast");
 }
 
 function toggleTasklistEditForm(id){

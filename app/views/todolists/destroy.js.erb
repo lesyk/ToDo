@@ -1,6 +1,6 @@
 $('[class^=calendar current]').remove();
 $('.preview-pane .preview').animate({left: "-375px"}, 300);
-$('.preview-pane .preview').html('');
+$('.preview-pane #showPreview').html('');
 $('.list-view li').removeClass('current');
 
 $("#counteOfTasks_<%= @todolist.list_id %>").html("<%= pluralize(@list.todolists.count, '') %>");
