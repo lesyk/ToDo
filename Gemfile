@@ -9,6 +9,9 @@ gem 'mysql2'
 
 gem 'acts-as-taggable-on'
 
+gem 'therubyracer'
+#run on server
+
 # Asset template engines
 gem 'sass-rails', "~> 3.1.0.rc"
 gem 'coffee-script'
