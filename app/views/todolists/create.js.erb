@@ -5,3 +5,5 @@ $("[class^=listing list-view]").append("<li class='calendar'><a class='more' hre
 previewPaneSetup();
 
 $("#counteOfTasks_<%= @todolist.list_id %>").html("<%= pluralize(@list.todolists.count, '') %>");
+
+cleanForm("create_todolist");

@@ -12,12 +12,12 @@
   </div>
   <div class="field">
     <small><%= f.label :duedate %></small><br />
-    <%= f.date_select :duedate %>
+   <input class="date" id="todolist_duedate" maxlength="524288" name="todolist[duedate]" size="20" tabindex="0">
   </div>
   <br />
   <div class="field">
 	<small>Status: </small>
-	<%=select_tag "todolist[compl]", options_for_select([["Open", "0"], ["Done", "1"]], :compl)%> | <small>Prio: </small><%=select_tag "todolist[prio]", options_for_select([["-1", "-1"], ["0", "0"], ["1", "1"], ["2", "2"]], :prio)%>
+	<%=select_tag "todolist[compl]", options_for_select([["Open", "0"], ["Done", "1"]], :compl)%> | <small>Prio: </small><%=select_tag "todolist[prio]", options_for_select([["-1", "-1"], ["0", "0"], ["1", "1"], ["2", "2"]], "-1")%>
 	</div>
 <br />
   <div class="field">

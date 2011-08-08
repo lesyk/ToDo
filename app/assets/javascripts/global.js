@@ -72,10 +72,7 @@ $(document).ready(function() {
     $('input[placeholder]').placeholder();
 
     // attach calendar to date inputs
-    $(":date").dateinput({
-        format: 'mm/dd/yyyy',
-        trigger: false
-    });
+	attachCalendarToDateInputs();
 
     // add close buttons to closeable message boxes
     $(".message.closeable").prepend('<span class="message-close"></span>')
@@ -195,9 +192,22 @@ function previewPaneSetup(){
     });
 }
 
+function attachCalendarToDateInputs(){
+	$(".date").dateinput({
+	    format: 'yyyy-mm-dd',
+	    trigger: false
+	});
+	
+	$("#date_edit").dateinput({
+	    format: 'yyyy-mm-dd',
+	    trigger: false
+	});
+}
+
 function toggleEditForm(){
 	$("#show").toggle("slow");
 	$("#edit").toggle("slow");
+	attachCalendarToDateInputs();
 }
 
 function showCreateTodolistForm(){
@@ -221,4 +231,12 @@ function hideCreateTodolistForm(){
 function toggleTasklistEditForm(id){
 	$("#list_" + id).toggle("slow");
 	$("#edit_list_" + id).toggle("slow");
+}
+
+function cleanForm(id){
+	$(':input','#' + id)
+	 .not(':button, :submit, :reset, :hidden')
+	 .val('')
+	 .removeAttr('checked')
+	 .removeAttr('selected');
 }

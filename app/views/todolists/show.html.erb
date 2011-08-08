@@ -59,7 +59,7 @@
   </div>
   <div class="field">
     <small><%= f.label :duedate %></small><br />
-    <%= f.date_select :duedate %>
+	<input class="date" id="todolist_duedate" maxlength="524288" name="todolist[duedate]" size="20" tabindex="0" value="<%= @todolist.duedate %>">
   </div>
   <br />
   <div class="field">

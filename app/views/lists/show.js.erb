@@ -2,6 +2,7 @@ $("#todolists").html("<%= escape_javascript(render("todolists")) %>");
 $("#create_todolist").html("<%= escape_javascript(render("create_todolist")) %>");
 
 previewPaneSetup();
+attachCalendarToDateInputs();
 
 $('.preview-pane .preview').animate({left: "-375px"}, 300);
 $('.preview-pane #showPreview').html('');
