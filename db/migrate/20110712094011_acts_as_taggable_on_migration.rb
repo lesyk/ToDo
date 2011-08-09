@@ -1,6 +1,6 @@
 class ActsAsTaggableOnMigration < ActiveRecord::Migration
   def self.up
-    create_table :tags do |t|
+    create_table :tags,  :options => 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
       t.string :name
     end
 

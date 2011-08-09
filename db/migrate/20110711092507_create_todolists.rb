@@ -1,6 +1,6 @@
 class CreateTodolists < ActiveRecord::Migration
   def change
-    create_table :todolists do |t|
+    create_table :todolists,  :options => 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
           t.integer :id, :null => false, :auto_increment=> true, :unsigned => true
           t.integer :list_id, :null => false, :unsigned => true, :default => 0, :key => true
           t.integer :compl, :null => false, :unsigned => true, :default => 0

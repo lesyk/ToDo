@@ -40,12 +40,12 @@ ActiveRecord::Schema.define(:version => 20110712094011) do
 
   create_table "todolists", :force => true do |t|
     t.integer  "list_id",     :default => 0, :null => false
-    t.date     "d_completed"
     t.integer  "compl",       :default => 0, :null => false
     t.string   "title",                      :null => false
     t.string   "note"
     t.integer  "prio",        :default => 0, :null => false
     t.date     "duedate"
+    t.date     "d_completed"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
