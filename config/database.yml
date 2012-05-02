@@ -1,11 +1,12 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: todo
   pool: 5
   username: root
-  password:
+  password: 
   socket: /tmp/mysql.sock
+  database: todo
+  host: localhost
   
 test:
     adapter: mysql2
